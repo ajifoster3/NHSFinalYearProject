@@ -1,0 +1,72 @@
+package Main;
+
+import java.util.Date;
+import java.util.List;
+
+public class PatientSet {
+
+    public String hospitalNumber;
+    public String firstName;
+    public String lastName;
+    public Date dateOfBirth;
+    public int age;
+    public String sex;
+    public String POID;
+    public String diagnosis;
+    public String patientCategory;
+    public Date admitDateHos;
+    public Date dischargeDateHos;
+    public Date admitDateICU;
+    public Date dischargeDateICU;
+    public int lengthOfStayHosp;
+    public int lengthOfStayICU;
+    public String admitType;
+    public String admitFrom;
+    public String dependencyPreAdmit;
+    public String pastMedicalHistory;
+    public String history;
+    public Boolean outcome;
+    public Date date;
+    public String breathing;
+    public String circulation;
+    public String durationOfSession;
+    public String comprehensiveRehab;
+    public String fitnessToParticipate;
+    public String delirium;
+    public String ipat;
+    public Boolean fitForPhysio;
+    public List<String> physioInterventions;
+    public int rassHigh;
+    public int rassLow;
+    public int respiratoryScore;
+    public int nervousScore;
+    public int cardiovascularScore;
+    public int liverScore;
+    public int coagulationScore;
+    public int kidneyScore;
+    public int respiritoryFunction;
+    public int cough;
+    public int movingInBed;
+    public int supineToSitting;
+    public int dynamicSitting;
+    public int standingBalance;
+    public int sitToStand;
+    public int transferBedToChair;
+    public int stepping;
+    public int gripStrength;
+    public int shoulderAbductionRight;
+    public int shoulderAbductionLeft;
+    public int elbowFlexionRight;
+    public int elbowFlexionLeft;
+    public int wristExtensionRight;
+    public int wristExtensionLeft;
+    public int hipFlexionRight;
+    public int hipFlexionLeft;
+    public int kneeExtensionRight;
+    public int kneeExtensionLeft;
+    public int ankleDorsiflexionRight;
+    public int ankleDorsiflexionLeft;
+    public boolean completed;
+    public String mms;
+
+}
