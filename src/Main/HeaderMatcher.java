@@ -9,7 +9,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -19,13 +18,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class HeaderMatcher extends AnchorPane {
+public class HeaderMatcher extends GridPane {
 
     List<String> headers;
 
     @FXML
     VBox left_pane;
-    @FXML VBox mid_pane;
+    @FXML
+    VBox mid_pane;
     @FXML
     GridPane right_pane;
 
@@ -35,6 +35,8 @@ public class HeaderMatcher extends AnchorPane {
     List<String> LeftJoined;
     List<String> RightJoined;
 
+    private int leftSelectedIndex;
+    private int midSelectedIndex;
     private DragIcon mDragOverIcon = null;
     private DragIcon mRDragOverIcon = null;
 
@@ -47,6 +49,7 @@ public class HeaderMatcher extends AnchorPane {
                 getClass().getResource("resources/HeaderMatcher.fxml")
         );
 
+
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -55,10 +58,13 @@ public class HeaderMatcher extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        leftSelectedIndex = -1;
+        midSelectedIndex = -1;
     }
 
     @FXML
     private void initialize() {
+
 
         RightJoined = new LinkedList<>();
         LeftJoined = new LinkedList<>();
@@ -86,28 +92,44 @@ public class HeaderMatcher extends AnchorPane {
         PatientSetList = (Arrays.asList(PatientSet.class.getFields())).stream().map(Field::getName).collect(Collectors.toList());
 
 
-        //populate left pane with multiple colored icons for testing
-        for (int i = 0; i < Headers.size(); i++) {
-            DragIcon icn = new DragIcon();
-
-            ((Label)icn.getChildren().get(0)).setText(Headers.get(i));
-
-
-            mid_pane.getChildren().add(icn);
-        }
         for (int i = 0; i < PatientSetList.size(); i++) {
 
-            StaticIcon icn = new StaticIcon();
+            DragIcon icn = new DragIcon();
+
+            final int index = i;
+            icn.setOnMouseClicked(event -> {
+                LeftPaneClick(index);
+            });
 
             ((Label)icn.getChildren().get(0)).setText(PatientSetList.get(i));
 
             left_pane.getChildren().add(icn);
         }
 
+        //populate left pane with multiple colored icons for testing
+        for (int i = 0; i < Headers.size(); i++) {
+            DragIcon icn = new DragIcon();
 
+            final int index = i;
+            icn.setOnMouseClicked(event -> {
+                MidPaneClick(index);
+            });
 
+            ((Label)icn.getChildren().get(0)).setText(Headers.get(i));
+
+            mid_pane.getChildren().add(icn);
+        }
     }
 
+    private void LeftPaneClick(int i){
+        leftSelectedIndex = i;
+        reload();
+    }
+
+    private void MidPaneClick(int i){
+        midSelectedIndex = i;
+        reload();
+    }
 
     @FXML
     private void reload() {
@@ -126,17 +148,32 @@ public class HeaderMatcher extends AnchorPane {
 
 
 
+
+        for (int i = 0; i < PatientSetList.size(); i++) {
+
+            DragIcon icn = new DragIcon();
+            ((Label)icn.getChildren().get(0)).setText(PatientSetList.get(i));
+            final int index = i;
+            icn.setOnMouseClicked(event -> {
+                LeftPaneClick(index);
+            });
+            if(leftSelectedIndex == i){
+                icn.setStyle("-fx-background-color: #FFB877;");
+            }
+            left_pane.getChildren().add(icn);
+        }
         //populate left pane with multiple colored icons for testing
         for (int i = 0; i < Headers.size(); i++) {
             DragIcon icn = new DragIcon();
             ((Label)icn.getChildren().get(0)).setText(Headers.get(i));
+            final int index = i;
+            icn.setOnMouseClicked(event -> {
+                MidPaneClick(index);
+            });
+            if(midSelectedIndex == i){
+                icn.setStyle("-fx-background-color: #FFB877;");
+            }
             mid_pane.getChildren().add(icn);
-        }
-        for (int i = 0; i < PatientSetList.size(); i++) {
-
-            StaticIcon icn = new StaticIcon();
-            ((Label)icn.getChildren().get(0)).setText(PatientSetList.get(i));
-            left_pane.getChildren().add(icn);
         }
         for (int i = 0; i < LeftJoined.size(); i++) {
             DragIcon icn = new DragIcon();

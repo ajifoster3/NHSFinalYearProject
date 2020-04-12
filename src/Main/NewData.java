@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -30,16 +27,15 @@ public class NewData {
     Button anchor_pane_button;
 
     @FXML
-    AnchorPane center_anchor;
+    GridPane center_grid;
 
     @FXML
     public void start() throws Exception {
         vbox = new VBox();
-        VBox.setVgrow(vbox, Priority.ALWAYS);
-        center_anchor = new AnchorPane();
-        vbox.getChildren().add(center_anchor);
-        Button anchor_pane_button = new Button("Confirm");
-        vbox.getChildren().add(anchor_pane_button);
+        center_grid = new GridPane();
+        center_grid.setMinSize(25, 25);
+        center_grid.setPrefSize(25000, 25000);
+        vbox.getChildren().add(center_grid);
         Stage primaryStage = new Stage();
 
         Stage stage = new Stage();
@@ -51,7 +47,7 @@ public class NewData {
         HeaderMatcher headerMatcher = new HeaderMatcher();
         headerMatcher.start(file);
 
-        center_anchor.getChildren().add(headerMatcher);
+        center_grid.getChildren().add(headerMatcher);
 
         primaryStage.setTitle("Header Matcher");
 
