@@ -1,21 +1,15 @@
 package Main;
 
-
-import javafx.fxml.FXML;
+import java.io.IOException;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.IOException;
+public class FieldMatcherSelectIconController extends AnchorPane{
 
-public class StaticIcon extends AnchorPane {
-
-    @FXML AnchorPane root_pane;
-
-    public StaticIcon() {
+    public FieldMatcherSelectIconController() {
 
         FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("resources/StaticIcon.fxml")
+                getClass().getResource("resources/FieldMatcherSelectIcon.fxml")
         );
         getStyleClass().add("dragicon");
         fxmlLoader.setRoot(this);
@@ -28,10 +22,5 @@ public class StaticIcon extends AnchorPane {
             throw new RuntimeException(exception);
         }
     }
-
-    @FXML
-    private void initialize() {}
-
-
 
 }

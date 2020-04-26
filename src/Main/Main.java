@@ -5,14 +5,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuItem;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main extends Application {
+
+    private static final Logger LOGGER = Logger.getLogger(FieldMatcherController.class.getName());
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -28,11 +28,18 @@ public class Main extends Application {
     }
 
     @FXML
-    private MenuItem main_menubar_file_new;
+    private void NewButtonClick(){
+        try {
+            Stage stage = new Stage();
+            FXMLLoader FieldMatcherLoader = new FXMLLoader(getClass().getResource("resources/FieldMatcher.fxml"));
+            Parent root = FieldMatcherLoader.load();
+            FieldMatcherLoader.getController();
+            Scene scene = new Scene(root,1500,500);
+            stage.setScene(scene);
+            stage.show();
+        } catch(Exception ex) {
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
 
-    @FXML
-    private void NewButtonClick()throws Exception{
-        NewData data = new NewData();
-        data.start();
     }
 }
