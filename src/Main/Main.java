@@ -31,6 +31,7 @@ public class Main extends Application {
     private void NewButtonClick(){
         try {
             Stage stage = new Stage();
+            stage.setTitle("NHS Field Matcher");
             FXMLLoader FieldMatcherLoader = new FXMLLoader(getClass().getResource("resources/FieldMatcher.fxml"));
             Parent root = FieldMatcherLoader.load();
             FieldMatcherLoader.getController();
