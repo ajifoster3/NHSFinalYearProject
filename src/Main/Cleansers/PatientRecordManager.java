@@ -1,9 +1,10 @@
-package Main;
+package Main.Cleansers;
 
 import Main.Data.PatientRecord.CPAx;
 import Main.Data.PatientRecord.MRC;
 import Main.Data.PatientRecord.Record;
 import Main.Data.PatientRecord.SOFA;
+import Main.Main;
 
 import java.util.Date;
 import java.util.List;

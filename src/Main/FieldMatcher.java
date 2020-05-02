@@ -1,4 +1,4 @@
 package Main;
 
-public class  {
+public class FieldMatcher {
 }

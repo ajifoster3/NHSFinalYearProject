@@ -1,6 +1,7 @@
 package Main;
 
 
+import Main.Cleansers.PatientRecordManager;
 import Main.Data.PatientRecordEnum;
 import javafx.event.Event;
 import javafx.event.EventHandler;
