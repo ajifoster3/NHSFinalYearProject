@@ -1,7 +1,6 @@
 package Main;
 
 
-import Main.Cleansers.PatientRecordManager;
 import Main.Data.PatientRecordEnum;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -65,8 +64,10 @@ public class FieldMatcherController implements Initializable {
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XLSX files (*.xlsx)", "*.xlsx");
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showOpenDialog(fileSelectStage);
+        ExcelReader excelReader = ExcelReader.getInstance();
         try {
-            headers = ExcelReading.ExcelHeadersAsList(WorkbookFactory.create(file).getSheetAt(0));
+            excelReader.setCurrentSheet(WorkbookFactory.create(file).getSheetAt(0));
+            headers = excelReader.ExcelHeadersAsList();
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
@@ -259,8 +260,9 @@ public class FieldMatcherController implements Initializable {
 
     @FXML
     private void button_confirm_click(){
-        PatientRecordManager patientRecordManager = new PatientRecordManager();
-        patientRecordManager.constructRecord(LeftJoined,RightJoined);
+        FieldMatcher matcher = new FieldMatcher(LeftJoined, RightJoined);
+        matcher.MatchHeaders();
+
     }
 
 }

@@ -22,6 +22,8 @@ public class Record {
     private MRC mrc;
     private MMS mms;
 
+    //region Accessors
+
     public Date getDate() {
         return date;
     }
@@ -150,6 +152,6 @@ public class Record {
         this.mms = mms;
     }
 
-
+    //endregion
 
 }
