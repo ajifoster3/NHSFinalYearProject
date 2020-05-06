@@ -2,65 +2,75 @@ package Main.Cleansers;
 
 import Main.ExcelReader;
 
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
-public class RecordCleanser {
+import static Main.Cleansers.DateParser.getDates;
+
+class RecordCleanser {
 
     private ExcelReader excelReader = ExcelReader.getInstance();
 
-    public List<String> cleansedate(String header){
-        List<String> dateList = excelReader.ExcelColumnAsList(header);
-        return dateList;
+    protected List<LocalDate> cleansedate(String header){
+        return getDates(header, excelReader);
     }
 
-    public List<String> cleansebreathing(String header){
+    protected List<String> cleansebreathing(String header){
         List<String> breathingList = excelReader.ExcelColumnAsList(header);
         return breathingList;
     }
 
-    public List<String> cleansecirculation(String header){
+    protected List<String> cleansecirculation(String header){
         List<String> circulationList = excelReader.ExcelColumnAsList(header);
         return circulationList;
     }
 
-    public List<String> cleansedurationOfSession(String header){
+    protected List<String> cleansedurationOfSession(String header){
         List<String> durationOfSessionList = excelReader.ExcelColumnAsList(header);
         return durationOfSessionList;
     }
 
-    public List<String> cleansecomprehensiveRehab(String header){
+    protected List<String> cleansecomprehensiveRehab(String header){
         List<String> comprehensiveRehabList = excelReader.ExcelColumnAsList(header);
         return comprehensiveRehabList;
     }
 
-    public List<String> cleansefitnessToParticipate(String header){
+    protected List<String> cleansefitnessToParticipate(String header){
         List<String> fitnessToParticipateList = excelReader.ExcelColumnAsList(header);
         return fitnessToParticipateList;
     }
 
-    public List<String> cleansedelirium(String header){
+    protected List<String> cleansedelirium(String header){
         List<String> deliriumList = excelReader.ExcelColumnAsList(header);
         return deliriumList;
     }
 
-    public List<String> cleanseipat(String header){
+    protected List<String> cleanseipat(String header){
         List<String> ipatList = excelReader.ExcelColumnAsList(header);
         return ipatList;
     }
 
-    public List<String> cleansefitForPhysio(String header){
+    protected List<Boolean> cleansefitForPhysio(String header){
         List<String> fitForPhysioList = excelReader.ExcelColumnAsList(header);
-        return fitForPhysioList;
+        List<Boolean> cleansedFitForPhysioList = new LinkedList<>();
+        fitForPhysioList.forEach(value -> cleansedFitForPhysioList.add(Boolean.parseBoolean(value)));
+        return cleansedFitForPhysioList;
     }
 
-    public List<String> cleanserassHigh(String header){
+    protected List<Integer> cleanserassHigh(String header){
         List<String> rassHighList = excelReader.ExcelColumnAsList(header);
-        return rassHighList;
+        List<Integer> cleansedrassHighList = new LinkedList<>();
+        rassHighList.forEach( value -> cleansedrassHighList.add(Integer.valueOf(value)) );
+        return cleansedrassHighList;
     }
 
-    public List<String> cleanserassLow(String header){
+    protected List<Integer> cleanserassLow(String header){
         List<String> rassLowList = excelReader.ExcelColumnAsList(header);
-        return rassLowList;
+        List<Integer> cleansedrassLowList = new LinkedList<>();
+        rassLowList.forEach( value -> cleansedrassLowList.add(Integer.valueOf(value)) );
+        return cleansedrassLowList;
     }
 
 }

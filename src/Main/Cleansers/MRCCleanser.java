@@ -2,70 +2,95 @@ package Main.Cleansers;
 
 import Main.ExcelReader;
 
+import java.util.LinkedList;
 import java.util.List;
 
-public class MRCCleanser {
+class MRCCleanser {
 
     private ExcelReader excelReader = ExcelReader.getInstance();
 
-    public List<String> cleanseshoulderAbductionRight(String header){
+    protected List<Integer> cleanseshoulderAbductionRight(String header){
         List<String> shoulderAbductionRightList = excelReader.ExcelColumnAsList(header);
-        return shoulderAbductionRightList;
+        List<Integer> cleansedshoulderAbductionRightList = new LinkedList<>();
+        shoulderAbductionRightList.forEach( value -> cleansedshoulderAbductionRightList.add(Integer.valueOf(value)) );
+        return cleansedshoulderAbductionRightList;
     }
 
-    public List<String> cleanseshoulderAbductionLeft(String header){
+    protected List<Integer> cleanseshoulderAbductionLeft(String header){
         List<String> shoulderAbductionLeftList = excelReader.ExcelColumnAsList(header);
-        return shoulderAbductionLeftList;
+        List<Integer> cleansedshoulderAbductionLeftList = new LinkedList<>();
+        shoulderAbductionLeftList.forEach( value -> cleansedshoulderAbductionLeftList.add(Integer.valueOf(value)) );
+        return cleansedshoulderAbductionLeftList;
     }
 
-    public List<String> cleanseelbowFlexionRight(String header){
+    protected List<Integer> cleanseelbowFlexionRight(String header){
         List<String> elbowFlexionRightList = excelReader.ExcelColumnAsList(header);
-        return elbowFlexionRightList;
+        List<Integer> cleansedelbowFlexionRightList = new LinkedList<>();
+        elbowFlexionRightList.forEach( value -> cleansedelbowFlexionRightList.add(Integer.valueOf(value)) );
+        return cleansedelbowFlexionRightList;
     }
 
-    public List<String> cleanseelbowFlexionLeft(String header){
+    protected List<Integer> cleanseelbowFlexionLeft(String header){
         List<String> elbowFlexionLeftList = excelReader.ExcelColumnAsList(header);
-        return elbowFlexionLeftList;
+        List<Integer> cleansedelbowFlexionLeftList = new LinkedList<>();
+        elbowFlexionLeftList.forEach( value -> cleansedelbowFlexionLeftList.add(Integer.valueOf(value)) );
+        return cleansedelbowFlexionLeftList;
     }
 
-    public List<String> cleansewristExtensionRight(String header){
+    protected List<Integer> cleansewristExtensionRight(String header){
         List<String> wristExtensionRightList = excelReader.ExcelColumnAsList(header);
-        return wristExtensionRightList;
+        List<Integer> cleansedwristExtensionRightList = new LinkedList<>();
+        wristExtensionRightList.forEach( value -> cleansedwristExtensionRightList.add(Integer.valueOf(value)) );
+        return cleansedwristExtensionRightList;
     }
 
-    public List<String> cleansewristExtensionLeft(String header){
+    protected List<Integer> cleansewristExtensionLeft(String header){
         List<String> wristExtensionLeftList = excelReader.ExcelColumnAsList(header);
-        return wristExtensionLeftList;
+        List<Integer> cleansedwristExtensionLeftList = new LinkedList<>();
+        wristExtensionLeftList.forEach( value -> cleansedwristExtensionLeftList.add(Integer.valueOf(value)) );
+        return cleansedwristExtensionLeftList;
     }
 
-    public List<String> cleansehipFlexionRight(String header){
+    protected List<Integer> cleansehipFlexionRight(String header){
         List<String> hipFlexionRightList = excelReader.ExcelColumnAsList(header);
-        return hipFlexionRightList;
+        List<Integer> cleansedhipFlexionRightList = new LinkedList<>();
+        hipFlexionRightList.forEach( value -> cleansedhipFlexionRightList.add(Integer.valueOf(value)) );
+        return cleansedhipFlexionRightList;
     }
 
-    public List<String> cleansehipFlexionLeft(String header){
+    protected List<Integer> cleansehipFlexionLeft(String header){
         List<String> hipFlexionLeftList = excelReader.ExcelColumnAsList(header);
-        return hipFlexionLeftList;
+        List<Integer> cleansedhipFlexionLeftList = new LinkedList<>();
+        hipFlexionLeftList.forEach( value -> cleansedhipFlexionLeftList.add(Integer.valueOf(value)) );
+        return cleansedhipFlexionLeftList;
     }
 
-    public List<String> cleansekneeExtensionRight(String header){
+    protected List<Integer> cleansekneeExtensionRight(String header){
         List<String> kneeExtensionRightList = excelReader.ExcelColumnAsList(header);
-        return kneeExtensionRightList;
+        List<Integer> cleansedkneeExtensionRightList = new LinkedList<>();
+        kneeExtensionRightList.forEach( value -> cleansedkneeExtensionRightList.add(Integer.valueOf(value)) );
+        return cleansedkneeExtensionRightList;
     }
 
-    public List<String> cleansekneeExtensionLeft(String header){
+    protected List<Integer> cleansekneeExtensionLeft(String header){
         List<String> kneeExtensionLeftList = excelReader.ExcelColumnAsList(header);
-        return kneeExtensionLeftList;
+        List<Integer> cleansedkneeExtensionLeftList = new LinkedList<>();
+        kneeExtensionLeftList.forEach( value -> cleansedkneeExtensionLeftList.add(Integer.valueOf(value)) );
+        return cleansedkneeExtensionLeftList;
     }
 
-    public List<String> cleanseankleDorsiflexionRight(String header){
+    protected List<Integer> cleanseankleDorsiflexionRight(String header){
         List<String> ankleDorsiflexionRightList = excelReader.ExcelColumnAsList(header);
-        return ankleDorsiflexionRightList;
+        List<Integer> cleansedankleDorsiflexionRightList = new LinkedList<>();
+        ankleDorsiflexionRightList.forEach( value -> cleansedankleDorsiflexionRightList.add(Integer.valueOf(value)) );
+        return cleansedankleDorsiflexionRightList;
     }
 
-    public List<String> cleanseankleDorsiflexionLeft(String header){
+    protected List<Integer> cleanseankleDorsiflexionLeft(String header){
         List<String> ankleDorsiflexionLeftList = excelReader.ExcelColumnAsList(header);
-        return ankleDorsiflexionLeftList;
+        List<Integer> cleansedankleDorsiflexionLeftList = new LinkedList<>();
+        ankleDorsiflexionLeftList.forEach( value -> cleansedankleDorsiflexionLeftList.add(Integer.valueOf(value)) );
+        return cleansedankleDorsiflexionLeftList;
     }
 
 }

@@ -2,40 +2,53 @@ package Main.Cleansers;
 
 import Main.ExcelReader;
 
+import java.util.LinkedList;
 import java.util.List;
 
-public class SOFACleanser {
+class SOFACleanser {
 
     private ExcelReader excelReader = ExcelReader.getInstance();
 
-    public List<String> cleanserespiratoryScore(String header){
+    protected List<Integer> cleanserespiratoryScore(String header){
         List<String> respiratoryScoreList = excelReader.ExcelColumnAsList(header);
-        return respiratoryScoreList;
+        List<Integer> cleansedrespiratoryScoreList = new LinkedList<>();
+        respiratoryScoreList.forEach( value -> cleansedrespiratoryScoreList.add(Integer.valueOf(value)) );
+        return cleansedrespiratoryScoreList;
     }
 
-    public List<String> cleansenervousScore(String header){
+    protected List<Integer> cleansenervousScore(String header){
         List<String> nervousScoreList = excelReader.ExcelColumnAsList(header);
-        return nervousScoreList;
+        List<Integer> cleansednervousScoreList = new LinkedList<>();
+        nervousScoreList.forEach( value -> cleansednervousScoreList.add(Integer.valueOf(value)) );
+        return cleansednervousScoreList;
     }
 
-    public List<String> cleansecardiovascularScore(String header){
+    protected List<Integer> cleansecardiovascularScore(String header){
         List<String> cardiovascularScoreList = excelReader.ExcelColumnAsList(header);
-        return cardiovascularScoreList;
+        List<Integer> cleansedcardiovascularScoreList = new LinkedList<>();
+        cardiovascularScoreList.forEach( value -> cleansedcardiovascularScoreList.add(Integer.valueOf(value)) );
+        return cleansedcardiovascularScoreList;
     }
 
-    public List<String> cleanseliverScore(String header){
+    protected List<Integer> cleanseliverScore(String header){
         List<String> liverScoreList = excelReader.ExcelColumnAsList(header);
-        return liverScoreList;
+        List<Integer> cleansedliverScoreList = new LinkedList<>();
+        liverScoreList.forEach( value -> cleansedliverScoreList.add(Integer.valueOf(value)) );
+        return cleansedliverScoreList;
     }
 
-    public List<String> cleansecoagulationScore(String header){
+    protected List<Integer> cleansecoagulationScore(String header){
         List<String> coagulationScoreList = excelReader.ExcelColumnAsList(header);
-        return coagulationScoreList;
+        List<Integer> cleansedcoagulationScoreList = new LinkedList<>();
+        coagulationScoreList.forEach( value -> cleansedcoagulationScoreList.add(Integer.valueOf(value)) );
+        return cleansedcoagulationScoreList;
     }
 
-    public List<String> cleansekidneyScore(String header){
+    protected List<Integer> cleansekidneyScore(String header){
         List<String> kidneyScoreList = excelReader.ExcelColumnAsList(header);
-        return kidneyScoreList;
+        List<Integer> cleansedkidneyScoreList = new LinkedList<>();
+        kidneyScoreList.forEach( value -> cleansedkidneyScoreList.add(Integer.valueOf(value)) );
+        return cleansedkidneyScoreList;
     }
 
 }

@@ -2,18 +2,21 @@ package Main.Cleansers;
 
 import Main.ExcelReader;
 
+import java.util.LinkedList;
 import java.util.List;
 
-public class MMSCleanser {
+class MMSCleanser {
 
     private ExcelReader excelReader = ExcelReader.getInstance();
 
-    public List<String> cleansecompleted(String header){
+    protected List<Boolean> cleansecompleted(String header){
         List<String> completedList = excelReader.ExcelColumnAsList(header);
-        return completedList;
+        List<Boolean> cleansedcompletedList = new LinkedList<>();
+        completedList.forEach(value -> cleansedcompletedList.add(Boolean.parseBoolean(value)));
+        return cleansedcompletedList;
     }
 
-    public List<String> cleansemms(String header){
+    protected List<String> cleansemms(String header){
         List<String> mmsList = excelReader.ExcelColumnAsList(header);
         return mmsList;
     }

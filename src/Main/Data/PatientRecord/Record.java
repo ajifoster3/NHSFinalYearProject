@@ -1,11 +1,12 @@
 package Main.Data.PatientRecord;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 public class Record {
 
-    private Date date;
+    private LocalDate date;
     private String breathing;
     private String circulation;
     private String durationOfSession;
@@ -24,11 +25,11 @@ public class Record {
 
     //region Accessors
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

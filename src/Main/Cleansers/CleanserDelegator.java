@@ -2,6 +2,8 @@ package Main.Cleansers;
 
 import Main.ExcelReader;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class CleanserDelegator {
@@ -24,7 +26,7 @@ public class CleanserDelegator {
         sofaCleanser = new SOFACleanser();
     }
 
-     //region patientCleansers
+    //region patientCleansers
 
     public List<String> cleansehospitalNumber(String header){
         return patientCleanser.cleansehospitalNumber(header);
@@ -38,11 +40,11 @@ public class CleanserDelegator {
         return patientCleanser.cleanselastName(header);
     }
 
-    public List<String> cleansedateOfBirth(String header){
+    public List<LocalDate> cleansedateOfBirth(String header){
         return patientCleanser.cleansedateOfBirth(header);
     }
 
-    public List<String> cleanseage(String header){
+    public List<Integer> cleanseage(String header){
         return patientCleanser.cleanseage(header);
     }
 
@@ -66,27 +68,27 @@ public class CleanserDelegator {
         return visitCleanser.cleansepatientCategory(header);
     }
 
-    public List<String> cleanseadmitDateHos(String header){
+    public List<LocalDate> cleanseadmitDateHos(String header){
         return visitCleanser.cleanseadmitDateHos(header);
     }
 
-    public List<String> cleansedischargeDateHos(String header){
+    public List<LocalDate> cleansedischargeDateHos(String header){
         return visitCleanser.cleansedischargeDateHos(header);
     }
 
-    public List<String> cleanseadmitDateICU(String header){
+    public List<LocalDate> cleanseadmitDateICU(String header){
         return visitCleanser.cleanseadmitDateICU(header);
     }
 
-    public List<String> cleansedischargeDateICU(String header){
+    public List<LocalDate> cleansedischargeDateICU(String header){
         return visitCleanser.cleansedischargeDateICU(header);
     }
 
-    public List<String> cleanselengthOfStayHosp(String header){
+    public List<Integer> cleanselengthOfStayHosp(String header){
         return visitCleanser.cleanselengthOfStayHosp(header);
     }
 
-    public List<String> cleanselengthOfStayICU(String header){
+    public List<Integer> cleanselengthOfStayICU(String header){
         return visitCleanser.cleanselengthOfStayICU(header);
     }
 
@@ -110,7 +112,7 @@ public class CleanserDelegator {
         return visitCleanser.cleansehistory(header);
     }
 
-    public List<String> cleanseoutcome(String header){
+    public List<Boolean> cleanseoutcome(String header){
         return visitCleanser.cleanseoutcome(header);
     }
 
@@ -118,7 +120,7 @@ public class CleanserDelegator {
 
     //region recordCleansers
 
-    public List<String> cleansedate(String header){
+    public List<LocalDate> cleansedate(String header){
         return recordCleanser.cleansedate(header);
     }
 
@@ -150,15 +152,15 @@ public class CleanserDelegator {
         return recordCleanser.cleanseipat(header);
     }
 
-    public List<String> cleansefitForPhysio(String header){
+    public List<Boolean> cleansefitForPhysio(String header){
         return recordCleanser.cleansefitForPhysio(header);
     }
 
-    public List<String> cleanserassHigh(String header){
+    public List<Integer> cleanserassHigh(String header){
         return recordCleanser.cleanserassHigh(header);
     }
 
-    public List<String> cleanserassLow(String header){
+    public List<Integer> cleanserassLow(String header){
         return recordCleanser.cleanserassLow(header);
     }
 
@@ -166,39 +168,39 @@ public class CleanserDelegator {
 
     //region cpaxCleansers
 
-    public List<String> cleansecough(String header){
+    public List<Integer> cleansecough(String header){
         return cpaxCleanser.cleansecough(header);
     }
 
-    public List<String> cleansemovingInBed(String header) {
+    public List<Integer> cleansemovingInBed(String header) {
         return cpaxCleanser.cleansemovingInBed(header);
     }
 
-    public List<String> cleansesupineToSitting(String header) {
+    public List<Integer> cleansesupineToSitting(String header) {
         return cpaxCleanser.cleansesupineToSitting(header);
     }
 
-    public List<String> cleansedynamicSitting(String header) {
+    public List<Integer> cleansedynamicSitting(String header) {
         return cpaxCleanser.cleansedynamicSitting(header);
     }
 
-    public List<String> cleansestandingBalance(String header) {
+    public List<Integer> cleansestandingBalance(String header) {
         return cpaxCleanser.cleansestandingBalance(header);
     }
 
-    public List<String> cleansesitToStand(String header) {
+    public List<Integer> cleansesitToStand(String header) {
         return cpaxCleanser.cleansesitToStand(header);
     }
 
-    public List<String> cleansetransferBedToChair(String header) {
+    public List<Integer> cleansetransferBedToChair(String header) {
         return cpaxCleanser.cleansetransferBedToChair(header);
     }
 
-    public List<String> cleansestepping(String header) {
+    public List<Integer> cleansestepping(String header) {
         return cpaxCleanser.cleansestepping(header);
     }
 
-    public List<String> cleansegripStrength(String header) {
+    public List<Integer> cleansegripStrength(String header) {
         return cpaxCleanser.cleansegripStrength(header);
     }
 
@@ -206,7 +208,7 @@ public class CleanserDelegator {
 
     //region mmsCleansers
 
-    public List<String> cleansecompleted(String header){
+    public List<Boolean> cleansecompleted(String header){
         return mmsCleanser.cleansecompleted(header);
     }
 
@@ -218,51 +220,51 @@ public class CleanserDelegator {
 
     //region mrcCleansers
 
-    public List<String> cleanseshoulderAbductionRight(String header){
+    public List<Integer> cleanseshoulderAbductionRight(String header){
         return mrcCleanser.cleanseshoulderAbductionRight(header);
     }
 
-    public List<String> cleanseshoulderAbductionLeft(String header){
+    public List<Integer> cleanseshoulderAbductionLeft(String header){
         return mrcCleanser.cleanseshoulderAbductionLeft(header);
     }
 
-    public List<String> cleanseelbowFlexionRight(String header){
+    public List<Integer> cleanseelbowFlexionRight(String header){
         return mrcCleanser.cleanseelbowFlexionRight(header);
     }
 
-    public List<String> cleanseelbowFlexionLeft(String header){
+    public List<Integer> cleanseelbowFlexionLeft(String header){
         return mrcCleanser.cleanseelbowFlexionLeft(header);
     }
 
-    public List<String> cleansewristExtensionRight(String header){
+    public List<Integer> cleansewristExtensionRight(String header){
         return mrcCleanser.cleansewristExtensionRight(header);
     }
 
-    public List<String> cleansewristExtensionLeft(String header){
+    public List<Integer> cleansewristExtensionLeft(String header){
         return mrcCleanser.cleansewristExtensionLeft(header);
     }
 
-    public List<String> cleansehipFlexionRight(String header){
+    public List<Integer> cleansehipFlexionRight(String header){
         return mrcCleanser.cleansehipFlexionRight(header);
     }
 
-    public List<String> cleansehipFlexionLeft(String header){
+    public List<Integer> cleansehipFlexionLeft(String header){
         return mrcCleanser.cleansehipFlexionLeft(header);
     }
 
-    public List<String> cleansekneeExtensionRight(String header){
+    public List<Integer> cleansekneeExtensionRight(String header){
         return mrcCleanser.cleansekneeExtensionRight(header);
     }
 
-    public List<String> cleansekneeExtensionLeft(String header){
+    public List<Integer> cleansekneeExtensionLeft(String header){
         return mrcCleanser.cleansekneeExtensionLeft(header);
     }
 
-    public List<String> cleanseankleDorsiflexionRight(String header){
+    public List<Integer> cleanseankleDorsiflexionRight(String header){
         return mrcCleanser.cleanseankleDorsiflexionRight(header);
     }
 
-    public List<String> cleanseankleDorsiflexionLeft(String header){
+    public List<Integer> cleanseankleDorsiflexionLeft(String header){
         return mrcCleanser.cleanseankleDorsiflexionLeft(header);
     }
 
@@ -270,27 +272,27 @@ public class CleanserDelegator {
 
     //region sofaCleansers
 
-    public List<String> cleanserespiratoryScore(String header){
+    public List<Integer> cleanserespiratoryScore(String header){
         return sofaCleanser.cleanserespiratoryScore(header);
     }
 
-    public List<String> cleansenervousScore(String header){
+    public List<Integer> cleansenervousScore(String header){
         return sofaCleanser.cleansenervousScore(header);
     }
 
-    public List<String> cleansecardiovascularScore(String header){
+    public List<Integer> cleansecardiovascularScore(String header){
         return sofaCleanser.cleansecardiovascularScore(header);
     }
 
-    public List<String> cleanseliverScore(String header){
+    public List<Integer> cleanseliverScore(String header){
         return sofaCleanser.cleanseliverScore(header);
     }
 
-    public List<String> cleansecoagulationScore(String header){
+    public List<Integer> cleansecoagulationScore(String header){
         return sofaCleanser.cleansecoagulationScore(header);
     }
 
-    public List<String> cleansekidneyScore(String header){
+    public List<Integer> cleansekidneyScore(String header){
         return sofaCleanser.cleansekidneyScore(header);
     }
 

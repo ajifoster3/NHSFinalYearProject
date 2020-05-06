@@ -2,85 +2,93 @@ package Main.Cleansers;
 
 import Main.ExcelReader;
 
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
-public class VisitCleanser {
+import static Main.Cleansers.DateParser.getDates;
+
+class VisitCleanser {
 
     private ExcelReader excelReader = ExcelReader.getInstance();
 
-    public List<String> cleansePOID(String header){
+    protected List<String> cleansePOID(String header){
         List<String> POIDList = excelReader.ExcelColumnAsList(header);
         return POIDList;
     }
 
-    public List<String> cleansediagnosis(String header){
+    protected List<String> cleansediagnosis(String header){
         List<String> diagnosisList = excelReader.ExcelColumnAsList(header);
         return diagnosisList;
     }
 
-    public List<String> cleansepatientCategory(String header){
+    protected List<String> cleansepatientCategory(String header){
         List<String> patientCategoryList = excelReader.ExcelColumnAsList(header);
         return patientCategoryList;
     }
 
-    public List<String> cleanseadmitDateHos(String header){
-        List<String> admitDateHosList = excelReader.ExcelColumnAsList(header);
-        return admitDateHosList;
+    protected List<LocalDate> cleanseadmitDateHos(String header){
+        return getDates(header, excelReader);
     }
 
-    public List<String> cleansedischargeDateHos(String header){
-        List<String> dischargeDateHosList = excelReader.ExcelColumnAsList(header);
-        return dischargeDateHosList;
+    protected List<LocalDate> cleansedischargeDateHos(String header){
+        return getDates(header, excelReader);
     }
 
-    public List<String> cleanseadmitDateICU(String header){
-        List<String> admitDateICUList = excelReader.ExcelColumnAsList(header);
-        return admitDateICUList;
+    protected List<LocalDate> cleanseadmitDateICU(String header){
+        return getDates(header, excelReader);
     }
 
-    public List<String> cleansedischargeDateICU(String header){
-        List<String> dischargeDateICUList = excelReader.ExcelColumnAsList(header);
-        return dischargeDateICUList;
+    protected List<LocalDate> cleansedischargeDateICU(String header){
+        return getDates(header, excelReader);
     }
 
-    public List<String> cleanselengthOfStayHosp(String header){
-        List<String> lengthOfStayHospList = excelReader.ExcelColumnAsList(header);
-        return lengthOfStayHospList;
+    protected List<Integer> cleanselengthOfStayHosp(String header){
+        List<String> lengthOfStayHosp = excelReader.ExcelColumnAsList(header);
+        List<Integer> cleansedlengthOfStayHosp = new LinkedList<>();
+        lengthOfStayHosp.forEach( value -> cleansedlengthOfStayHosp.add(Integer.valueOf(value)) );
+        return cleansedlengthOfStayHosp;
     }
 
-    public List<String> cleanselengthOfStayICU(String header){
+    protected List<Integer> cleanselengthOfStayICU(String header){
         List<String> lengthOfStayICUList = excelReader.ExcelColumnAsList(header);
-        return lengthOfStayICUList;
+        List<Integer> cleansedlengthOfStayICUList = new LinkedList<>();
+        lengthOfStayICUList.forEach( value -> cleansedlengthOfStayICUList.add(Integer.valueOf(value)) );
+        return cleansedlengthOfStayICUList;
+
     }
 
-    public List<String> cleanseadmitType(String header){
+    protected List<String> cleanseadmitType(String header){
         List<String> admitTypeList = excelReader.ExcelColumnAsList(header);
         return admitTypeList;
     }
 
-    public List<String> cleanseadmitFrom(String header){
+    protected List<String> cleanseadmitFrom(String header){
         List<String> admitFromList = excelReader.ExcelColumnAsList(header);
         return admitFromList;
     }
 
-    public List<String> cleansedependencyPreAdmit(String header){
+    protected List<String> cleansedependencyPreAdmit(String header){
         List<String> dependencyPreAdmitList = excelReader.ExcelColumnAsList(header);
         return dependencyPreAdmitList;
     }
 
-    public List<String> cleansepastMedicalHistory(String header){
+    protected List<String> cleansepastMedicalHistory(String header){
         List<String> pastMedicalHistoryList = excelReader.ExcelColumnAsList(header);
         return pastMedicalHistoryList;
     }
 
-    public List<String> cleansehistory(String header){
+    protected List<String> cleansehistory(String header){
         List<String> historyList = excelReader.ExcelColumnAsList(header);
         return historyList;
     }
 
-    public List<String> cleanseoutcome(String header){
+    protected List<Boolean> cleanseoutcome(String header){
         List<String> outcomeList = excelReader.ExcelColumnAsList(header);
-        return outcomeList;
+        List<Boolean> cleansedoutcomeList = new LinkedList<>();
+        outcomeList.forEach(fitForPhysio -> cleansedoutcomeList.add(Boolean.parseBoolean(fitForPhysio)));
+        return cleansedoutcomeList;
     }
 
 }

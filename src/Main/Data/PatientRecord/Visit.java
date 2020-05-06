@@ -1,5 +1,6 @@
 package Main.Data.PatientRecord;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -9,10 +10,10 @@ public class Visit {
     private List<Record> records;
     private String diagnosis;
     private String patientCategory;
-    private Date admitDateHos;
-    private Date dischargeDateHos;
-    private Date admitDateICU;
-    private Date dischargeDateICU;
+    private LocalDate admitDateHos;
+    private LocalDate dischargeDateHos;
+    private LocalDate admitDateICU;
+    private LocalDate dischargeDateICU;
     private int lengthOfStayHosp;
     private int lengthOfStayICU;
     private String admitType;

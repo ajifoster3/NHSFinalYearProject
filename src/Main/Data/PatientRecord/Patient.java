@@ -1,5 +1,6 @@
 package Main.Data.PatientRecord;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class Patient {
     private List<Visit> hospitalVisits;
     private String firstName;
     private String lastName;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private int age;
     private String sex;
 
