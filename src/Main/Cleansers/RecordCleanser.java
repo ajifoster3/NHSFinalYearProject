@@ -1,11 +1,10 @@
 package Main.Cleansers;
 
+import Main.Data.RASS;
 import Main.ExcelReader;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static Main.Cleansers.DateParser.getDates;
 
@@ -19,58 +18,86 @@ class RecordCleanser {
 
     protected List<String> cleansebreathing(String header){
         List<String> breathingList = excelReader.ExcelColumnAsList(header);
+        breathingList.replaceAll(String::trim);
+        breathingList.replaceAll(String::toUpperCase);
         return breathingList;
     }
 
     protected List<String> cleansecirculation(String header){
         List<String> circulationList = excelReader.ExcelColumnAsList(header);
+        circulationList.replaceAll(String::trim);
+        circulationList.replaceAll(String::toUpperCase);
         return circulationList;
     }
 
     protected List<String> cleansedurationOfSession(String header){
         List<String> durationOfSessionList = excelReader.ExcelColumnAsList(header);
+        durationOfSessionList.replaceAll(String::trim);
+        durationOfSessionList.replaceAll(String::toUpperCase);
         return durationOfSessionList;
     }
 
     protected List<String> cleansecomprehensiveRehab(String header){
         List<String> comprehensiveRehabList = excelReader.ExcelColumnAsList(header);
+        comprehensiveRehabList.replaceAll(String::trim);
+        comprehensiveRehabList.replaceAll(String::toUpperCase);
         return comprehensiveRehabList;
     }
 
     protected List<String> cleansefitnessToParticipate(String header){
         List<String> fitnessToParticipateList = excelReader.ExcelColumnAsList(header);
+        fitnessToParticipateList.replaceAll(String::trim);
+        fitnessToParticipateList.replaceAll(String::toUpperCase);
+        fitnessToParticipateList.forEach(s -> {
+            if(s.matches("-?\\d+(\\.\\d+)?")){
+                fitnessToParticipateList.set(fitnessToParticipateList.indexOf(s), String.valueOf((int) Double.parseDouble(s)));
+            }
+        });
         return fitnessToParticipateList;
     }
 
     protected List<String> cleansedelirium(String header){
         List<String> deliriumList = excelReader.ExcelColumnAsList(header);
+        deliriumList.replaceAll(String::trim);
+        deliriumList.replaceAll(String::toUpperCase);
         return deliriumList;
     }
 
     protected List<String> cleanseipat(String header){
         List<String> ipatList = excelReader.ExcelColumnAsList(header);
+        ipatList.replaceAll(String::trim);
+        ipatList.replaceAll(String::toUpperCase);
         return ipatList;
     }
 
     protected List<Boolean> cleansefitForPhysio(String header){
         List<String> fitForPhysioList = excelReader.ExcelColumnAsList(header);
         List<Boolean> cleansedFitForPhysioList = new LinkedList<>();
-        fitForPhysioList.forEach(value -> cleansedFitForPhysioList.add(Boolean.parseBoolean(value)));
+        for (String value : fitForPhysioList) {
+            if(value.toUpperCase().contains("YES")){
+                cleansedFitForPhysioList.add(true);
+            }else{
+                cleansedFitForPhysioList.add(false);
+            }
+        }
         return cleansedFitForPhysioList;
     }
 
-    protected List<Integer> cleanserassHigh(String header){
-        List<String> rassHighList = excelReader.ExcelColumnAsList(header);
-        List<Integer> cleansedrassHighList = new LinkedList<>();
-        rassHighList.forEach( value -> cleansedrassHighList.add(Integer.valueOf(value)) );
-        return cleansedrassHighList;
-    }
-
-    protected List<Integer> cleanserassLow(String header){
-        List<String> rassLowList = excelReader.ExcelColumnAsList(header);
-        List<Integer> cleansedrassLowList = new LinkedList<>();
-        rassLowList.forEach( value -> cleansedrassLowList.add(Integer.valueOf(value)) );
-        return cleansedrassLowList;
+    protected List<RASS> cleanserass(String header){
+        List<String> rassList = excelReader.ExcelColumnAsList(header);
+        List<RASS> cleansedRassList = new LinkedList<>();
+        rassList.forEach( value -> {
+            List<String> csvrass = Arrays.asList(value.split(","));
+            List<Integer> rassAsInt = new LinkedList<>();
+            csvrass.forEach( csvValue ->
+            {
+                if(csvValue.matches("-?\\d+(\\.\\d+)?"))
+                    rassAsInt.add(Integer.parseInt(csvValue));
+            });
+            RASS rass = new RASS(Collections.min(rassAsInt), Collections.max(rassAsInt));
+            cleansedRassList.add(rass);
+        });
+        return cleansedRassList;
     }
 
 }

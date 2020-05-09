@@ -1,5 +1,6 @@
 package Main.Cleansers;
 
+import Main.Data.RASS;
 import Main.ExcelReader;
 
 import java.time.LocalDate;
@@ -156,12 +157,8 @@ public class CleanserDelegator {
         return recordCleanser.cleansefitForPhysio(header);
     }
 
-    public List<Integer> cleanserassHigh(String header){
-        return recordCleanser.cleanserassHigh(header);
-    }
-
-    public List<Integer> cleanserassLow(String header){
-        return recordCleanser.cleanserassLow(header);
+    public List<RASS> cleanserass(String header){
+        return recordCleanser.cleanserass(header);
     }
 
     //endregion

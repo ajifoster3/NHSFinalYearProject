@@ -31,8 +31,8 @@ public class DateParser {
         List<LocalDate> parsedDates = new LinkedList<>();
         ZoneId defaultZoneId = ZoneId.systemDefault();
         dateList.forEach(date -> {
+            Boolean isDateSet = false;
             for (String parse : formats) {
-                Boolean isDateSet = false;
                 DateTimeFormatter format = new DateTimeFormatterBuilder()
                         .appendPattern(parse)
                         .parseDefaulting(ChronoField.MONTH_OF_YEAR, 1)
@@ -40,10 +40,15 @@ public class DateParser {
                         .toFormatter();
                 try {
                     parsedDates.add(LocalDate.parse(date, format));
+                    isDateSet = true;
                     break;
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
+
+            }
+            if(!isDateSet){
+                parsedDates.add(LocalDate.of(1, 1, 1));
             }
         });
 

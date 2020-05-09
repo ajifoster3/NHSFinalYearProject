@@ -1,6 +1,7 @@
 package Main.Cleansers;
 
 import Main.ExcelReader;
+import org.apache.xmlbeans.UserType;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
 
 import static Main.Cleansers.DateParser.getDates;
 
@@ -17,16 +19,27 @@ class PatientCleanser {
 
     protected List<String> cleansehospitalNumber(String header){
         List<String> hospitalNumbersList = excelReader.ExcelColumnAsList(header);
+        int i = 0;
+        for (String s : hospitalNumbersList) {
+            if(s.matches("-?\\d+(\\.\\d+)?")){
+                hospitalNumbersList.set(i, String.valueOf((int)Double.parseDouble(s)));
+            }
+            i++;
+        }
         return hospitalNumbersList;
     }
 
     protected List<String> cleansefirstName(String header){
         List<String> firstNameList = excelReader.ExcelColumnAsList(header);
+        firstNameList.replaceAll(String::trim);
+        firstNameList.replaceAll(String::toUpperCase);
         return firstNameList;
     }
 
     protected List<String> cleanselastName(String header){
         List<String> lastNameList = excelReader.ExcelColumnAsList(header);
+        lastNameList.replaceAll(String::trim);
+        lastNameList.replaceAll(String::toUpperCase);
         return lastNameList;
     }
 
@@ -37,12 +50,21 @@ class PatientCleanser {
     protected List<Integer> cleanseage(String header){
         List<String> ageList = excelReader.ExcelColumnAsList(header);
         List<Integer> parsedAgeList = new LinkedList<>();
-        ageList.forEach(value -> parsedAgeList.add(Integer.valueOf(value)));
+        ageList.forEach( value -> {
+            if(!value.replaceAll("[^\\.0123456789]","").isEmpty()){
+                parsedAgeList.add((int)Double.parseDouble(value.trim().replaceAll("[^\\.0123456789-]","")));
+            }
+            else{
+                parsedAgeList.add(-1);
+            }
+        } );
         return parsedAgeList;
     }
 
     protected List<String> cleansesex(String header){
         List<String> sexList = excelReader.ExcelColumnAsList(header);
+        sexList.replaceAll(String::trim);
+        sexList.replaceAll(String::toUpperCase);
         return sexList;
     }
 
