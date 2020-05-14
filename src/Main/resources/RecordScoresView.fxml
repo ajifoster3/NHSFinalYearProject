@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.RecordScoresViewController">
+    <children>
+        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab text="SOFA">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <VBox>
+                                <children>
+                                    <HBox>
+                                        <Label text="Respiratory Score: " />
+                                        <Label fx:id="respiratory" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Nervous Score: " />
+                                        <Label fx:id="nervous" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Cardiovascular Score: " />
+                                        <Label fx:id="cardiovascular" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Liver Score: " />
+                                        <Label fx:id="liver" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Coagulation Score: " />
+                                        <Label fx:id="coagulation" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Kidney Score: " />
+                                        <Label fx:id="kidney" />
+                                    </HBox>
+                                </children>
+                                <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                </padding>
+                            </VBox>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="CPAx">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <VBox>
+                                <children>
+                                    <HBox>
+                                        <Label text="Cough: " />
+                                        <Label fx:id="cough" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Moving in Bed: " />
+                                        <Label fx:id="movingInBed" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Supine to Standing: " />
+                                        <Label fx:id="supineToStanding" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Dynamic Sitting: " />
+                                        <Label fx:id="dynamicSitting" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Standing Balance: " />
+                                        <Label fx:id="standingBalance" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Sit To Stand: " />
+                                        <Label fx:id="sitToStand" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Transfer Bed to Chair: " />
+                                        <Label fx:id="transferBedToChair" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Stepping: " />
+                                        <Label fx:id="stepping" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Grip Strength: " />
+                                        <Label fx:id="gripStrength" />
+                                    </HBox>
+                                </children>
+                                <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                </padding>
+                            </VBox>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="MRC">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <VBox>
+                                <children>
+                                    <HBox>
+                                        <Label text="Shoulder Abduction Right: " />
+                                        <Label fx:id="shoulderAbductionRight" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Shoulder Abduction Left: " />
+                                        <Label fx:id="shoulderAbductionLeft" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Elbow Flexion Right: " />
+                                        <Label fx:id="elbowFlexionRight" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Elbow Flexion left: " />
+                                        <Label fx:id="elbowFlexionleft" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Wrist Extension Right: " />
+                                        <Label fx:id="wristExtensionLeft" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Wrist Extension Left: " />
+                                        <Label fx:id="wristExtensionRight" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Hip Flexion Right: " />
+                                        <Label fx:id="hipFlexionRight" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Hip Flexion Left: " />
+                                        <Label fx:id="hipFlexionLeft" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Knee Extension Right: " />
+                                        <Label fx:id="kneeExtensionRight" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Knee Extension left: " />
+                                        <Label fx:id="kneeExtensionleft" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Ankle Dorsiflexion Right: " />
+                                        <Label fx:id="ankleDorsiflexionRight" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="Ankle Dorsiflexion Left: " />
+                                        <Label fx:id="ankleDorsiflexionLeft" />
+                                    </HBox>
+                                </children>
+                                <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                </padding>
+                            </VBox>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="MMS">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <VBox>
+                                <children>
+                                    <HBox>
+                                        <Label text="MMS: " />
+                                        <Label fx:id="mms" />
+                                    </HBox>
+                                </children>
+                                <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                </padding>
+                            </VBox>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>
