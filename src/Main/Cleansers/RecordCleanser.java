@@ -1,10 +1,14 @@
 package Main.Cleansers;
 
+
 import Main.Data.RASS;
 import Main.ExcelReader;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 import static Main.Cleansers.DateParser.getDates;
 
@@ -92,9 +96,14 @@ class RecordCleanser {
             csvrass.forEach( csvValue ->
             {
                 if(csvValue.matches("-?\\d+(\\.\\d+)?"))
-                    rassAsInt.add(Integer.parseInt(csvValue));
+                    rassAsInt.add((int)Double.parseDouble(csvValue));
             });
-            RASS rass = new RASS(Collections.min(rassAsInt), Collections.max(rassAsInt));
+            RASS rass;
+            if(!rassAsInt.isEmpty()) {
+                rass = new RASS(Collections.min(rassAsInt), Collections.max(rassAsInt));
+            }else{
+                rass = new RASS(-99, -99);
+            }
             cleansedRassList.add(rass);
         });
         return cleansedRassList;

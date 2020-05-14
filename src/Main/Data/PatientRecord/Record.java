@@ -1,11 +1,17 @@
 package Main.Data.PatientRecord;
 
+import Main.LocalDateDeserializer;
+import Main.LocalDateSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class Record {
 
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate date;
     private String breathing;
     private String circulation;
@@ -22,6 +28,10 @@ public class Record {
     private CPAx cpax;
     private MRC mrc;
     private MMS mms;
+
+    public Record(){
+
+    }
 
     //region Accessors
 

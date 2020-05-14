@@ -1,6 +1,6 @@
 package Main;
 
-
+import Main.Data.PatientRecord.Patient;
 import Main.Data.PatientRecordEnum;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -261,8 +261,14 @@ public class FieldMatcherController implements Initializable {
     @FXML
     private void button_confirm_click(){
         FieldMatcher matcher = new FieldMatcher(LeftJoined, RightJoined);
-        matcher.MatchHeaders();
+        List<Patient> patients = matcher.BuildPatientList();
+        MainViewController main = Main.mainViewController;
+        Stage stage = (Stage) button_confirm.getScene().getWindow();
+        stage.close();
+        main.setPatientList(patients);
+        main.loadPatientTable();
 
     }
+
 
 }
