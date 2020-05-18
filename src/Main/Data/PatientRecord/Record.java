@@ -1,7 +1,7 @@
 package Main.Data.PatientRecord;
 
-import Main.LocalDateDeserializer;
-import Main.LocalDateSerializer;
+import Main.Helpers.LocalDateDeserializer;
+import Main.Helpers.LocalDateSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 

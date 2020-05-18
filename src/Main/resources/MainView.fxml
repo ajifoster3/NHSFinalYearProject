@@ -11,7 +11,8 @@
             <items>
                   <MenuItem fx:id="main_menubar_file_new" mnemonicParsing="false" onAction="#NewButtonClick" text="Import New Data" />
                   <MenuItem fx:id="main_menubar_file_open" mnemonicParsing="false" onAction="#OpenButtonClick" text="Open" />
-                  <MenuItem fx:id="main_menubar_file_save_as" mnemonicParsing="false" onAction="#SaveAsButtonClick" text="Save As" />
+                  <MenuItem fx:id="main_menubar_file_save_as" mnemonicParsing="false" onAction="#SaveAsButtonClick" text="Save As JSON" />
+                <MenuItem fx:id="main_menubar_file_save_as_db" mnemonicParsing="false" onAction="#SaveAsDbButtonClick" text="Save As DB" />
                   <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>

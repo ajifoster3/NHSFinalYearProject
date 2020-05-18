@@ -3,6 +3,9 @@ package Main;
 import Main.Data.PatientRecord.Patient;
 import Main.Data.PatientRecord.Record;
 import Main.Data.PatientRecord.Visit;
+import Main.Helpers.DBHelper;
+import Main.Helpers.PatientJsonConverter;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -312,4 +315,13 @@ public class MainViewController implements Initializable {
         this.patientList = patientList;
     }
 
+    public void SaveAsDbButtonClick(ActionEvent actionEvent) {
+        try {
+            DBHelper.createNewDatabase("Patient.db");
+            DBHelper.createDataTables("Patient.db");
+            DBHelper.InsertPatients("Patient.db", this.patientList);
+        } catch(Exception ex) {
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+    }
 }

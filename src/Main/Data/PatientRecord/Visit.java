@@ -1,13 +1,12 @@
 package Main.Data.PatientRecord;
 
-import Main.AgeCalculator;
-import Main.LocalDateDeserializer;
-import Main.LocalDateSerializer;
+import Main.Helpers.AgeCalculator;
+import Main.Helpers.LocalDateDeserializer;
+import Main.Helpers.LocalDateSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class Visit {

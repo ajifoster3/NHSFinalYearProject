@@ -1,7 +1,8 @@
-package Main;
+package Main.Helpers;
 
 
 import Main.Data.PatientRecord.Patient;
+import Main.Main;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
