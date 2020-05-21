@@ -18,10 +18,14 @@ public class MMS {
     }
 
     public String getMms() {
+        if(mms == ""){
+            return "-1";
+        }
         return mms;
     }
 
     public void setMms(String mms) {
+
         this.mms = mms;
     }
 }

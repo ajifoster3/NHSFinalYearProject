@@ -1,8 +1,6 @@
 package Main.Helpers;
 
-import Main.Data.PatientRecord.Patient;
-import Main.Data.PatientRecord.Record;
-import Main.Data.PatientRecord.Visit;
+import Main.Data.PatientRecord.*;
 import Main.Main;
 import org.sqlite.SQLiteConfig;
 
@@ -156,17 +154,15 @@ public class DBHelper {
         try {
             Statement stmt = c.createStatement();
             String sql = "CREATE TABLE SOFA " +
-                    "(DATE DATE," +
-                    "POID           TEXT, " +
+                    "(RECORDID           INTEGER, " +
                     "RESPIRITORYSCORE           INT, " +
                     "NERVOUSSCORE            INT, " +
                     "CARDIOVASCULARSCORE         INT, " +
                     "LIVERSCORE            INT, " +
                     "COAGULATIONSCORE            INT, " +
                     "KIDNEYSCORE            INT, " +
-                    "PRIMARY KEY (DATE, POID)," +
-                    "FOREIGN KEY(DATE) REFERENCES RECORD(DATE),"+
-                    "FOREIGN KEY(POID) REFERENCES RECORD(POID))";
+                    "PRIMARY KEY (RECORDID)," +
+                    "FOREIGN KEY(RECORDID) REFERENCES RECORD(ID))";
             stmt.executeUpdate(sql);
             stmt.close();
         } catch ( Exception e ) {
@@ -180,20 +176,18 @@ public class DBHelper {
         try {
             Statement stmt = c.createStatement();
             String sql = "CREATE TABLE CPAX " +
-                    "(DATE DATE," +
-                    "POID           TEXT, " +
+                    "(RECORDID           INTEGER , " +
                     "COUGH           INT, " +
                     "MOVINGINBED            INT, " +
-                    "SUPINETOSTANDING         INT, " +
+                    "SUPINETOSITTING         INT, " +
                     "DYNAMICBALANCE            INT, " +
                     "STANDINGBALANCE            INT, " +
                     "SITTOSTAND            INT, " +
                     "TRANSFERBEDTOCHAIR            INT, " +
                     "STEPPING            INT, " +
                     "GRIPSTRENGTH            INT," +
-                    "PRIMARY KEY (DATE, POID)," +
-                    "FOREIGN KEY(DATE) REFERENCES RECORD(DATE),"+
-                    "FOREIGN KEY(POID) REFERENCES RECORD(POID))";;
+                    "PRIMARY KEY (RECORDID)," +
+                    "FOREIGN KEY(RECORDID) REFERENCES RECORD(ID))";;
             stmt.executeUpdate(sql);
             stmt.close();
         } catch ( Exception e ) {
@@ -207,8 +201,7 @@ public class DBHelper {
         try {
             Statement stmt = c.createStatement();
             String sql = "CREATE TABLE MRC " +
-                    "(DATE DATE," +
-                    "POID           TEXT, " +
+                    "(RECORDID           INTEGER, " +
                     "SHOULDERABDUCTIONRIGHT           INT, " +
                     "SHOULDERABDUCTIONLEFT           INT, " +
                     "ELBOWFLEXIONRIGHT           INT, " +
@@ -221,9 +214,8 @@ public class DBHelper {
                     "KNEEEXTENSIONLEFT           INT, " +
                     "ANKLEDORSIFLEXIONRIGHT           INT, " +
                     "ANKLEDORSIFLEXIONLEFT           INT, " +
-                    "PRIMARY KEY (DATE, POID)" +
-                    "FOREIGN KEY(DATE) REFERENCES RECORD(DATE),"+
-                    "FOREIGN KEY(POID) REFERENCES RECORD(POID))"; ;
+                    "PRIMARY KEY (RECORDID)" +
+                    "FOREIGN KEY(RECORDID) REFERENCES RECORD(ID))"; ;
             stmt.executeUpdate(sql);
             stmt.close();
         } catch ( Exception e ) {
@@ -237,12 +229,10 @@ public class DBHelper {
         try {
             Statement stmt = c.createStatement();
             String sql = "CREATE TABLE MMS " +
-                    "(DATE DATE," +
-                    "POID           TEXT, " +
+                    "(RECORDID           INTEGER, " +
                     "MMS           TEXT, "  +
-                    "PRIMARY KEY (DATE, POID)" +
-                    "FOREIGN KEY(DATE) REFERENCES RECORD(DATE),"+
-                    "FOREIGN KEY(POID) REFERENCES RECORD(POID))";;
+                    "PRIMARY KEY (RECORDID)" +
+                    "FOREIGN KEY(RECORDID) REFERENCES RECORD(ID))";
             stmt.executeUpdate(sql);
             stmt.close();
         } catch ( Exception e ) {
@@ -366,115 +356,126 @@ public class DBHelper {
                     + record.getRassLow() + " ,"
                     + record.getRassHigh() + ")";
             stmt.executeUpdate(sql);
+            ResultSet resultset = stmt.getGeneratedKeys();
+            int key = resultset.getInt("last_insert_rowid()");
             stmt.close();
+            InsertSOFA(c, record.getSofa(), key);
+            InsertCPAX(c, record.getCpax(), key);
+            InsertMRC(c, record.getMrc(), key);
+            InsertMMS(c, record.getMms(), key);
+
         } catch ( Exception e ) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
     }
-    public static void InsertSOFA(Connection c, Patient patient){
+    public static void InsertSOFA(Connection c, SOFA sofa, int recordId){
         try {
             Statement stmt = c.createStatement();
             String sql = "INSERT INTO SOFA (" +
-                    "HOSPNO," +
-                    "FIRSTNAME, " +
-                    "LASTNAME, " +
-                    "DATEOFBIRTH, " +
-                    "AGE, " +
-                    "SEX)" +
+                    "RECORDID," +
+                    "RESPIRITORYSCORE, " +
+                    "NERVOUSSCORE, " +
+                    "CARDIOVASCULARSCORE, " +
+                    "LIVERSCORE, " +
+                    "COAGULATIONSCORE, " +
+                    "KIDNEYSCORE) " +
                     "VALUES ("
-                    + patient.getHospitalNumber() + " ,"
-                    + patient.getFirstName() + " ,"
-                    + patient.getLastName() + " ,"
-                    + patient.getDateOfBirth() + " ,"
-                    + patient.getAge() + ","
-                    + patient.getSex() + ")";
+                    + recordId + " ,"
+                    + sofa.getRespiratoryScore() + " ,"
+                    + sofa.getNervousScore() + " ,"
+                    + sofa.getCardiovascularScore() + " ,"
+                    + sofa.getLiverScore() + ","
+                    + sofa.getCoagulationScore() + ","
+                    + sofa.getKidneyScore() + ")";
             stmt.executeUpdate(sql);
             stmt.close();
-            patient.getHospitalVisits().forEach(visit ->{
-                InsertVisit(c, visit, patient.getHospitalNumber());
-            });
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
     }
-    public static void InsertCPAX(Connection c, Patient patient){
+    public static void InsertCPAX(Connection c, CPAx cpax, int recordId){
         try {
             Statement stmt = c.createStatement();
             String sql = "INSERT INTO CPAX (" +
-                    "HOSPNO," +
-                    "FIRSTNAME, " +
-                    "LASTNAME, " +
-                    "DATEOFBIRTH, " +
-                    "AGE, " +
-                    "SEX)" +
+                    "RECORDID," +
+                    "COUGH, " +
+                    "MOVINGINBED, " +
+                    "SUPINETOSITTING, " +
+                    "DYNAMICBALANCE, " +
+                    "STANDINGBALANCE, " +
+                    "SITTOSTAND, " +
+                    "TRANSFERBEDTOCHAIR, " +
+                    "STEPPING, " +
+                    "GRIPSTRENGTH)" +
                     "VALUES ("
-                    + patient.getHospitalNumber() + " ,"
-                    + patient.getFirstName() + " ,"
-                    + patient.getLastName() + " ,"
-                    + patient.getDateOfBirth() + " ,"
-                    + patient.getAge() + ","
-                    + patient.getSex() + ")";
+                    + recordId + " ,"
+                    + cpax.getCough() + " ,"
+                    + cpax.getMovingInBed() + " ,"
+                    + cpax.getSupineToSitting() + " ,"
+                    + cpax.getDynamicSitting() + ","
+                    + cpax.getStandingBalance() + ","
+                    + cpax.getSitToStand() + ","
+                    + cpax.getTransferBedToChair() + ","
+                    + cpax.getStandingBalance()  + ","
+                    + cpax.getGripStrength() + ")";
             stmt.executeUpdate(sql);
             stmt.close();
-            patient.getHospitalVisits().forEach(visit ->{
-                InsertVisit(c, visit, patient.getHospitalNumber());
-            });
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
     }
-    public static void InsertMRC(Connection c, Patient patient){
+    public static void InsertMRC(Connection c, MRC mrc, int recordId){
         try {
             Statement stmt = c.createStatement();
             String sql = "INSERT INTO MRC (" +
-                    "HOSPNO," +
-                    "FIRSTNAME, " +
-                    "LASTNAME, " +
-                    "DATEOFBIRTH, " +
-                    "AGE, " +
-                    "SEX)" +
+                    "RECORDID, " +
+                    "SHOULDERABDUCTIONRIGHT, " +
+                    "SHOULDERABDUCTIONLEFT, " +
+                    "ELBOWFLEXIONRIGHT, " +
+                    "ELBOWFLEXIONLEFT, " +
+                    "WRISTEXTENSIONRIGHT, " +
+                    "WRISTEXTENSIONLEFT, " +
+                    "HIPFLEXIONRIGHT, " +
+                    "HIPFLEXIONLEFT, " +
+                    "KNEEEXTENSIONRIGHT, " +
+                    "KNEEEXTENSIONLEFT, " +
+                    "ANKLEDORSIFLEXIONRIGHT , " +
+                    "ANKLEDORSIFLEXIONLEFT) " +
                     "VALUES ("
-                    + patient.getHospitalNumber() + " ,"
-                    + patient.getFirstName() + " ,"
-                    + patient.getLastName() + " ,"
-                    + patient.getDateOfBirth() + " ,"
-                    + patient.getAge() + ","
-                    + patient.getSex() + ")";
+                    + recordId + " ,"
+                    + mrc.getShoulderAbductionRight() + " ,"
+                    + mrc.getShoulderAbductionLeft() + " ,"
+                    + mrc.getElbowFlexionRight() + " ,"
+                    + mrc.getElbowFlexionLeft() + ","
+                    + mrc.getWristExtensionRight() + " ,"
+                    + mrc.getWristExtensionLeft() + " ,"
+                    + mrc.getHipFlexionRight() + " ,"
+                    + mrc.getHipFlexionLeft() + ","
+                    + mrc.getKneeExtensionRight() + " ,"
+                    + mrc.getKneeExtensionLeft() + ","
+                    + mrc.getAnkleDorsiflexionRight() + ","
+                    + mrc.getAnkleDorsiflexionLeft() + ")";
             stmt.executeUpdate(sql);
             stmt.close();
-            patient.getHospitalVisits().forEach(visit ->{
-                InsertVisit(c, visit, patient.getHospitalNumber());
-            });
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
     }
-    public static void InsertMMS(Connection c, Patient patient){
+    public static void InsertMMS(Connection c, MMS mms, int recordId){
         try {
             Statement stmt = c.createStatement();
             String sql = "INSERT INTO MMS (" +
-                    "HOSPNO," +
-                    "FIRSTNAME, " +
-                    "LASTNAME, " +
-                    "DATEOFBIRTH, " +
-                    "AGE, " +
-                    "SEX)" +
+                    "RECORDID, " +
+                    "MMS) " +
                     "VALUES ("
-                    + patient.getHospitalNumber() + " ,"
-                    + patient.getFirstName() + " ,"
-                    + patient.getLastName() + " ,"
-                    + patient.getDateOfBirth() + " ,"
-                    + patient.getAge() + ","
-                    + patient.getSex() + ")";
+                    + recordId + ", "
+                    + mms.getMms() + ")";
             stmt.executeUpdate(sql);
             stmt.close();
-            patient.getHospitalVisits().forEach(visit ->{
-                InsertVisit(c, visit, patient.getHospitalNumber());
-            });
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
