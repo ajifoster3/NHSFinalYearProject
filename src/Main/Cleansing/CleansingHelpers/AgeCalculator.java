@@ -1,7 +1,5 @@
-package Main.Helpers;
+package Main.Cleansing.CleansingHelpers;
 
-
-import Main.Main;
 
 import java.time.LocalDate;
 import java.time.Period;

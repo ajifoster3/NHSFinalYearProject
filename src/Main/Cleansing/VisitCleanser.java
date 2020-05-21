@@ -1,13 +1,11 @@
-package Main.Cleansers;
+package Main.Cleansing;
 
 
-import Main.Helpers.ExcelReader;
+import Main.Cleansing.CleansingHelpers.ExcelReader;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
-
-import static Main.Cleansers.DateParser.getDates;
 
 class VisitCleanser {
 
@@ -46,19 +44,19 @@ class VisitCleanser {
     }
 
     protected List<LocalDate> cleanseadmitDateHos(String header){
-        return getDates(header, excelReader);
+        return DateParser.getDates(header, excelReader);
     }
 
     protected List<LocalDate> cleansedischargeDateHos(String header){
-        return getDates(header, excelReader);
+        return DateParser.getDates(header, excelReader);
     }
 
     protected List<LocalDate> cleanseadmitDateICU(String header){
-        return getDates(header, excelReader);
+        return DateParser.getDates(header, excelReader);
     }
 
     protected List<LocalDate> cleansedischargeDateICU(String header){
-        return getDates(header, excelReader);
+        return DateParser.getDates(header, excelReader);
     }
 
     protected List<Integer> cleanselengthOfStayHosp(String header){

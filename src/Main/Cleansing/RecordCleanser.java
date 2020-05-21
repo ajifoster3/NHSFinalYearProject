@@ -1,8 +1,8 @@
-package Main.Cleansers;
+package Main.Cleansing;
 
 
+import Main.Cleansing.CleansingHelpers.ExcelReader;
 import Main.Data.RASS;
-import Main.Helpers.ExcelReader;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -10,14 +10,12 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import static Main.Cleansers.DateParser.getDates;
-
 class RecordCleanser {
 
     private ExcelReader excelReader = ExcelReader.getInstance();
 
     protected List<LocalDate> cleansedate(String header){
-        return getDates(header, excelReader);
+        return DateParser.getDates(header, excelReader);
     }
 
     protected List<String> cleansebreathing(String header){

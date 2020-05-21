@@ -1,7 +1,7 @@
-package Main.Cleansers;
+package Main.Cleansing;
 
 import Main.Data.RASS;
-import Main.Helpers.ExcelReader;
+import Main.Cleansing.CleansingHelpers.ExcelReader;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

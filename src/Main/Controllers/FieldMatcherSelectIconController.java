@@ -1,6 +1,7 @@
-package Main;
+package Main.Controllers;
 
 import java.io.IOException;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
@@ -9,7 +10,7 @@ public class FieldMatcherSelectIconController extends AnchorPane{
     public FieldMatcherSelectIconController() {
 
         FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("resources/FieldMatcherSelectIcon.fxml")
+                getClass().getResource("../resources/FieldMatcherSelectIcon.fxml")
         );
         getStyleClass().add("dragicon");
         fxmlLoader.setRoot(this);

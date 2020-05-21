@@ -1,13 +1,11 @@
-package Main.Cleansers;
+package Main.Cleansing;
 
 
-import Main.Helpers.ExcelReader;
+import Main.Cleansing.CleansingHelpers.ExcelReader;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
-
-import static Main.Cleansers.DateParser.getDates;
 
 class PatientCleanser {
 
@@ -40,7 +38,7 @@ class PatientCleanser {
     }
 
     protected List<LocalDate> cleansedateOfBirth(String header){
-        return getDates(header, excelReader);
+        return DateParser.getDates(header, excelReader);
     }
 
     protected List<Integer> cleanseage(String header){

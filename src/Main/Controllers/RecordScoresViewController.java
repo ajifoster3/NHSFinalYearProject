@@ -1,6 +1,7 @@
-package Main;
+package Main.Controllers;
 
 import Main.Data.PatientRecord.*;
+import Main.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

@@ -1,4 +1,4 @@
-package Main.Data;
+package Main.Enums;
 
 public enum PatientRecordEnum {
 

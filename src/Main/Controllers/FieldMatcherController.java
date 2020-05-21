@@ -1,8 +1,10 @@
-package Main;
+package Main.Controllers;
 
 import Main.Data.PatientRecord.Patient;
-import Main.Data.PatientRecordEnum;
-import Main.Helpers.ExcelReader;
+import Main.Enums.PatientRecordEnum;
+import Main.Cleansing.CleansingHelpers.ExcelReader;
+import Main.Main;
+import Main.Matching.FieldMatcher;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

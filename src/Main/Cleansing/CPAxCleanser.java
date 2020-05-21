@@ -1,6 +1,6 @@
-package Main.Cleansers;
+package Main.Cleansing;
 
-import Main.Helpers.ExcelReader;
+import Main.Cleansing.CleansingHelpers.ExcelReader;
 
 import java.util.List;
 

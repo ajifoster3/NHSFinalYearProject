@@ -1,4 +1,4 @@
-package Main.Cleansers;
+package Main.Cleansing;
 
 import Main.Data.RASS;
 import java.time.LocalDate;

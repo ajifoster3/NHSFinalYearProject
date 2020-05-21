@@ -1,20 +1,15 @@
-package Main.Helpers;
+package Main.Controllers.ControllerHelpers;
 
 
 import Main.Data.PatientRecord.Patient;
-import Main.Main;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;

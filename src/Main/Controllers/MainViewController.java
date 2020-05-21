@@ -1,10 +1,10 @@
-package Main;
+package Main.Controllers;
 
 import Main.Data.PatientRecord.Patient;
 import Main.Data.PatientRecord.Record;
 import Main.Data.PatientRecord.Visit;
-import Main.Helpers.DBHelper;
-import Main.Helpers.PatientJsonConverter;
+import Main.Controllers.ControllerHelpers.DBHelper;
+import Main.Controllers.ControllerHelpers.PatientJsonConverter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -232,7 +232,7 @@ public class MainViewController implements Initializable {
         try {
             Stage stage = new Stage();
             stage.setTitle("");
-            FXMLLoader FieldMatcherLoader = new FXMLLoader(getClass().getResource("resources/RecordScoresView.fxml"));
+            FXMLLoader FieldMatcherLoader = new FXMLLoader(getClass().getResource("../resources/RecordScoresView.fxml"));
             Parent root = FieldMatcherLoader.load();
             RecordScoresViewController controller = FieldMatcherLoader.getController();
             controller.populateScores(record);
@@ -280,7 +280,7 @@ public class MainViewController implements Initializable {
         try {
             Stage stage = new Stage();
             stage.setTitle("NHS Field Matcher");
-            FXMLLoader FieldMatcherLoader = new FXMLLoader(getClass().getResource("resources/FieldMatcher.fxml"));
+            FXMLLoader FieldMatcherLoader = new FXMLLoader(getClass().getResource("../resources/FieldMatcher.fxml"));
             Parent root = FieldMatcherLoader.load();
             FieldMatcherLoader.getController();
             Scene scene = new Scene(root,1500,500);

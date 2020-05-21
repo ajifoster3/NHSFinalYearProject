@@ -1,11 +1,11 @@
-package Main;
+package Main.Matching;
 
 
-import Main.Cleansers.CleanserDelegator;
+import Main.Cleansing.CleanserDelegator;
+import Main.Controllers.FieldMatcherController;
 import Main.Data.PatientRecord.*;
-import Main.Data.PatientRecordEnum;
+import Main.Enums.PatientRecordEnum;
 import Main.Data.RASS;
-
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;

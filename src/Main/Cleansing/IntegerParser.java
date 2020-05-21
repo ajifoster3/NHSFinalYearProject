@@ -1,4 +1,4 @@
-package Main.Cleansers;
+package Main.Cleansing;
 
 import java.util.LinkedList;
 import java.util.List;
