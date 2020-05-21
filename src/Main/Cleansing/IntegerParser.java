@@ -8,7 +8,7 @@ public class IntegerParser {
     protected static List<Integer> GetIntegers(List<String> values){
         List<Integer> integerValues = new LinkedList<>();
         values.forEach(value -> {
-            value = value.trim().replaceAll("[^\\.0123456789]","");
+            value = value.trim().replaceAll("[^\\.0123456789-]","");
             if(!value.isEmpty()){
                 integerValues.add((int) Double.parseDouble(value));
             }else{

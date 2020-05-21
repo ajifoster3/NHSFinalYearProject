@@ -1,12 +1,19 @@
 package Main.Cleansing;
 
-import Main.Cleansing.CleansingHelpers.ExcelReader;
+import Main.ExcelReader;
 
+import java.util.Collections;
 import java.util.List;
 
 class CPAxCleanser {
 
     private ExcelReader excelReader = ExcelReader.getInstance();
+
+
+    protected List<Integer> cleanserespiritoryFunction(String header){
+        List<String> respiritoryFunctionList = excelReader.ExcelColumnAsList(header);
+        return cleanseCPAX(respiritoryFunctionList);
+    }
 
     protected List<Integer> cleansecough(String header){
         List<String> coughList = excelReader.ExcelColumnAsList(header);
@@ -51,6 +58,12 @@ class CPAxCleanser {
     protected List<Integer> cleansegripStrength(String header) {
         List<String> gripStrengthList = excelReader.ExcelColumnAsList(header);
         return cleanseCPAX(gripStrengthList);
+    }
+
+    protected List<Integer> cleansecpaxTotal(String header) {
+        List<String> cpaxTotalList = excelReader.ExcelColumnAsList(header);
+        Collections.replaceAll(cpaxTotalList, "", "-1");
+        return cleanseCPAX(cpaxTotalList);
     }
 
     private List<Integer> cleanseCPAX(List<String> values){

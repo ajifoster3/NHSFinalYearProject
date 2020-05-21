@@ -25,7 +25,6 @@ public class MMS {
     }
 
     public void setMms(String mms) {
-
         this.mms = mms;
     }
 }

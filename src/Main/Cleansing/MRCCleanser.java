@@ -1,7 +1,7 @@
 package Main.Cleansing;
 
 
-import Main.Cleansing.CleansingHelpers.ExcelReader;
+import Main.ExcelReader;
 import java.util.List;
 
 class MRCCleanser {
@@ -66,6 +66,12 @@ class MRCCleanser {
     protected List<Integer> cleanseankleDorsiflexionLeft(String header){
         List<String> ankleDorsiflexionLeftList = excelReader.ExcelColumnAsList(header);
         return cleanseMRC(ankleDorsiflexionLeftList);
+    }
+
+    protected List<Integer> cleansemrcTotal(String header){
+        List<String> mrcTotalList = excelReader.ExcelColumnAsList(header);
+        mrcTotalList.forEach(value ->{if(value.equals("")) value = "-1";});
+        return cleanseMRC(mrcTotalList);
     }
 
     private List<Integer> cleanseMRC(List<String> values){

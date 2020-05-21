@@ -1,8 +1,9 @@
 package Main.Cleansing;
 
 
-import Main.Cleansing.CleansingHelpers.ExcelReader;
+import Main.ExcelReader;
 
+import java.util.Collections;
 import java.util.List;
 
 class SOFACleanser {
@@ -37,6 +38,12 @@ class SOFACleanser {
     protected List<Integer> cleansekidneyScore(String header){
         List<String> kidneyScoreList = excelReader.ExcelColumnAsList(header);
         return cleanseSOFA(kidneyScoreList);
+    }
+
+    protected List<Integer> cleansesofaTotal(String header){
+        List<String> sofaTotalScoreList = excelReader.ExcelColumnAsList(header);
+        Collections.replaceAll(sofaTotalScoreList, "", "-1");
+        return cleanseSOFA(sofaTotalScoreList);
     }
 
     private List<Integer> cleanseSOFA(List<String> values){

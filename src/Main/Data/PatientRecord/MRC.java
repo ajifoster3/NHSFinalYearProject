@@ -14,13 +14,15 @@ public class MRC {
     private int kneeExtensionLeft;
     private int ankleDorsiflexionRight;
     private int ankleDorsiflexionLeft;
+    private int total;
 
     public MRC(){
 
     }
 
     public int getShoulderAbductionRight() {
-        return shoulderAbductionRight;
+        if(isValid()) return shoulderAbductionRight;
+        return -1;
     }
 
     public void setShoulderAbductionRight(int shoulderAbductionRight) {
@@ -28,7 +30,8 @@ public class MRC {
     }
 
     public int getShoulderAbductionLeft() {
-        return shoulderAbductionLeft;
+        if(isValid()) return shoulderAbductionLeft;
+        return -1;
     }
 
     public void setShoulderAbductionLeft(int shoulderAbductionLeft) {
@@ -36,7 +39,8 @@ public class MRC {
     }
 
     public int getElbowFlexionRight() {
-        return elbowFlexionRight;
+        if(isValid()) return elbowFlexionRight;
+        return -1;
     }
 
     public void setElbowFlexionRight(int elbowFlexionRight) {
@@ -44,7 +48,8 @@ public class MRC {
     }
 
     public int getElbowFlexionLeft() {
-        return elbowFlexionLeft;
+        if(isValid()) return elbowFlexionLeft;
+        return -1;
     }
 
     public void setElbowFlexionLeft(int elbowFlexionLeft) {
@@ -52,7 +57,8 @@ public class MRC {
     }
 
     public int getWristExtensionRight() {
-        return wristExtensionRight;
+        if(isValid()) return wristExtensionRight;
+        return -1;
     }
 
     public void setWristExtensionRight(int wristExtensionRight) {
@@ -60,7 +66,8 @@ public class MRC {
     }
 
     public int getWristExtensionLeft() {
-        return wristExtensionLeft;
+        if(isValid()) return wristExtensionLeft;
+        return -1;
     }
 
     public void setWristExtensionLeft(int wristExtensionLeft) {
@@ -68,7 +75,8 @@ public class MRC {
     }
 
     public int getHipFlexionRight() {
-        return hipFlexionRight;
+        if(isValid()) return hipFlexionRight;
+        return -1;
     }
 
     public void setHipFlexionRight(int hipFlexionRight) {
@@ -76,7 +84,8 @@ public class MRC {
     }
 
     public int getHipFlexionLeft() {
-        return hipFlexionLeft;
+        if(isValid()) return hipFlexionLeft;
+        return -1;
     }
 
     public void setHipFlexionLeft(int hipFlexionLeft) {
@@ -84,7 +93,8 @@ public class MRC {
     }
 
     public int getKneeExtensionRight() {
-        return kneeExtensionRight;
+        if(isValid()) return kneeExtensionRight;
+        return -1;
     }
 
     public void setKneeExtensionRight(int kneeExtensionRight) {
@@ -92,7 +102,8 @@ public class MRC {
     }
 
     public int getKneeExtensionLeft() {
-        return kneeExtensionLeft;
+        if(isValid()) return kneeExtensionLeft;
+        return -1;
     }
 
     public void setKneeExtensionLeft(int kneeExtensionLeft) {
@@ -100,7 +111,8 @@ public class MRC {
     }
 
     public int getAnkleDorsiflexionRight() {
-        return ankleDorsiflexionRight;
+        if(isValid()) return ankleDorsiflexionRight;
+        return -1;
     }
 
     public void setAnkleDorsiflexionRight(int ankleDorsiflexionRight) {
@@ -108,10 +120,23 @@ public class MRC {
     }
 
     public int getAnkleDorsiflexionLeft() {
-        return ankleDorsiflexionLeft;
+        if(isValid()) return ankleDorsiflexionLeft;
+        return -1;
     }
 
     public void setAnkleDorsiflexionLeft(int ankleDorsiflexionLeft) {
         this.ankleDorsiflexionLeft = ankleDorsiflexionLeft;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    private boolean isValid(){
+        return !(total == -1);
     }
 }

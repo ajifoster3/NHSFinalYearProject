@@ -11,13 +11,15 @@ public class CPAx {
     private int transferBedToChair;
     private int stepping;
     private int gripStrength;
+    private int total;
 
     public CPAx(){
 
     }
 
     public int getCough() {
-        return cough;
+        if(isValid()) return cough;
+        return -1;
     }
 
     public void setCough(int cough) {
@@ -25,7 +27,8 @@ public class CPAx {
     }
 
     public int getMovingInBed() {
-        return movingInBed;
+        if(isValid()) return movingInBed;
+        return -1;
     }
 
     public void setMovingInBed(int movingInBed) {
@@ -33,7 +36,8 @@ public class CPAx {
     }
 
     public int getSupineToSitting() {
-        return supineToSitting;
+        if(isValid()) return supineToSitting;
+        return -1;
     }
 
     public void setSupineToSitting(int supineToSitting) {
@@ -41,7 +45,8 @@ public class CPAx {
     }
 
     public int getDynamicSitting() {
-        return dynamicSitting;
+        if(isValid()) return dynamicSitting;
+        return -1;
     }
 
     public void setDynamicSitting(int dynamicSitting) {
@@ -49,7 +54,8 @@ public class CPAx {
     }
 
     public int getStandingBalance() {
-        return standingBalance;
+        if(isValid()) return standingBalance;
+        return -1;
     }
 
     public void setStandingBalance(int standingBalance) {
@@ -57,7 +63,8 @@ public class CPAx {
     }
 
     public int getSitToStand() {
-        return sitToStand;
+        if(isValid()) return sitToStand;
+        return -1;
     }
 
     public void setSitToStand(int sitToStand) {
@@ -65,7 +72,8 @@ public class CPAx {
     }
 
     public int getTransferBedToChair() {
-        return transferBedToChair;
+        if(isValid()) return transferBedToChair;
+        return -1;
     }
 
     public void setTransferBedToChair(int transferBedToChair) {
@@ -73,7 +81,8 @@ public class CPAx {
     }
 
     public int getStepping() {
-        return stepping;
+        if(isValid()) return stepping;
+        return -1;
     }
 
     public void setStepping(int stepping) {
@@ -81,10 +90,24 @@ public class CPAx {
     }
 
     public int getGripStrength() {
-        return gripStrength;
+        if(isValid()) return gripStrength;
+        return -1;
     }
 
     public void setGripStrength(int gripStrength) {
         this.gripStrength = gripStrength;
     }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    private boolean isValid(){
+        return !(getTotal() == -1);
+    }
+
 }

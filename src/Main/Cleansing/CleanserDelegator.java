@@ -162,6 +162,10 @@ public class CleanserDelegator {
 
     //region cpaxCleansers
 
+    public List<Integer> cleanserespiritoryFunction(String header) {
+        return cpaxCleanser.cleanserespiritoryFunction(header);
+    }
+
     public List<Integer> cleansecough(String header){
         return cpaxCleanser.cleansecough(header);
     }
@@ -196,6 +200,10 @@ public class CleanserDelegator {
 
     public List<Integer> cleansegripStrength(String header) {
         return cpaxCleanser.cleansegripStrength(header);
+    }
+
+    public List<Integer> cleansecpaxTotal(String header) {
+        return cpaxCleanser.cleansecpaxTotal(header);
     }
 
     //endregion
@@ -262,6 +270,10 @@ public class CleanserDelegator {
         return mrcCleanser.cleanseankleDorsiflexionLeft(header);
     }
 
+    public List<Integer> cleansemrcTotal(String header){
+        return mrcCleanser.cleansemrcTotal(header);
+    }
+
     //endregion
 
     //region sofaCleansers
@@ -288,6 +300,10 @@ public class CleanserDelegator {
 
     public List<Integer> cleansekidneyScore(String header){
         return sofaCleanser.cleansekidneyScore(header);
+    }
+
+    public List<Integer> cleansesofaTotal(String header){
+        return sofaCleanser.cleansesofaTotal(header);
     }
 
     //endregion

@@ -8,13 +8,15 @@ public class SOFA {
     private int liverScore;
     private int coagulationScore;
     private int kidneyScore;
+    private int total;
 
     public SOFA(){
 
     }
 
     public int getRespiratoryScore() {
-        return respiratoryScore;
+        if(isValid()) return respiratoryScore;
+        return -1;
     }
 
     public void setRespiratoryScore(int respiratoryScore) {
@@ -22,7 +24,8 @@ public class SOFA {
     }
 
     public int getNervousScore() {
-        return nervousScore;
+        if(isValid()) return nervousScore;
+        return -1;
     }
 
     public void setNervousScore(int nervousScore) {
@@ -30,7 +33,8 @@ public class SOFA {
     }
 
     public int getCardiovascularScore() {
-        return cardiovascularScore;
+        if(isValid()) return cardiovascularScore;
+        return -1;
     }
 
     public void setCardiovascularScore(int cardiovascularScore) {
@@ -38,7 +42,8 @@ public class SOFA {
     }
 
     public int getLiverScore() {
-        return liverScore;
+        if(isValid()) return liverScore;
+        return -1;
     }
 
     public void setLiverScore(int liverScore) {
@@ -46,7 +51,8 @@ public class SOFA {
     }
 
     public int getCoagulationScore() {
-        return coagulationScore;
+        if(isValid()) return coagulationScore;
+        return -1;
     }
 
     public void setCoagulationScore(int coagulationScore) {
@@ -54,10 +60,23 @@ public class SOFA {
     }
 
     public int getKidneyScore() {
-        return kidneyScore;
+        if(isValid()) return kidneyScore;
+        return -1;
     }
 
     public void setKidneyScore(int kidneyScore) {
         this.kidneyScore = kidneyScore;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    private boolean isValid(){
+        return !(total == -1);
     }
 }

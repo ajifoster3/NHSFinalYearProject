@@ -1,10 +1,9 @@
 package Main.Controllers;
 
 import Main.Data.PatientRecord.Patient;
-import Main.Enums.PatientRecordEnum;
-import Main.Cleansing.CleansingHelpers.ExcelReader;
-import Main.Main;
-import Main.Matching.FieldMatcher;
+import Main.Enums.EnumValue;
+import Main.ExcelReader;
+import Main.Cleansing.PatientBuilder;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -50,6 +49,8 @@ public class FieldMatcherController implements Initializable {
     List<String> Headers;
     List<String> FilteredHeaders;
 
+    MainViewController mainViewController;
+
     List<String> LeftJoined;
     List<String> RightJoined;
 
@@ -87,11 +88,11 @@ public class FieldMatcherController implements Initializable {
         }
         Headers = list;
 
-        PatientSetList = Stream.of(PatientRecordEnum.values())
+        PatientSetList = Stream.of(EnumValue.values())
                 .map(Enum::name)
                 .collect(Collectors.toList());
 
-        PatientSetList = Stream.of(PatientRecordEnum.values())
+        PatientSetList = Stream.of(EnumValue.values())
                 .map(Enum::name)
                 .collect(Collectors.toList());
 
@@ -191,7 +192,7 @@ public class FieldMatcherController implements Initializable {
             icn.setOnMouseClicked(event -> LeftPaneClick(index));
             Tooltip.install(
                     icn,
-                    new Tooltip(PatientRecordEnum.valueOf(PatientSetList.get(i)).getCode())
+                    new Tooltip(EnumValue.valueOf(PatientSetList.get(i)).getCode())
             );
             if (leftSelectedIndex == i) {
                 icn.setStyle("-fx-background-color: #FFB877; -fx-background-radius:0; -fx-border-color: black");
@@ -263,13 +264,13 @@ public class FieldMatcherController implements Initializable {
 
     @FXML
     private void button_confirm_click(){
-        FieldMatcher matcher = new FieldMatcher(LeftJoined, RightJoined);
+        PatientBuilder matcher = new PatientBuilder(LeftJoined, RightJoined);
         List<Patient> patients = matcher.BuildPatientList();
-        MainViewController main = Main.mainViewController;
+
         Stage stage = (Stage) button_confirm.getScene().getWindow();
         stage.close();
-        main.setPatientList(patients);
-        main.loadPatientTable();
+        this.mainViewController.setPatientList(patients);
+        this.mainViewController.loadPatientTable();
 
     }
 

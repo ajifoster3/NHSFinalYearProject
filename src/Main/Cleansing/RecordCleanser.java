@@ -1,7 +1,7 @@
 package Main.Cleansing;
 
 
-import Main.Cleansing.CleansingHelpers.ExcelReader;
+import Main.ExcelReader;
 import Main.Data.RASS;
 
 import java.time.LocalDate;

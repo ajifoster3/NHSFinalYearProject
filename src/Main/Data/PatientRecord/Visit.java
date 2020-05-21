@@ -1,6 +1,6 @@
 package Main.Data.PatientRecord;
 
-import Main.Cleansing.CleansingHelpers.AgeCalculator;
+import Main.Data.DataHelpers.AgeCalculator;
 import Main.Cleansing.CleansingHelpers.LocalDateDeserializer;
 import Main.Cleansing.CleansingHelpers.LocalDateSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

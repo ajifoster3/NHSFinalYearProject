@@ -232,9 +232,9 @@ public class MainViewController implements Initializable {
         try {
             Stage stage = new Stage();
             stage.setTitle("");
-            FXMLLoader FieldMatcherLoader = new FXMLLoader(getClass().getResource("../resources/RecordScoresView.fxml"));
-            Parent root = FieldMatcherLoader.load();
-            RecordScoresViewController controller = FieldMatcherLoader.getController();
+            FXMLLoader RecordScoresLoader = new FXMLLoader(getClass().getResource("../resources/RecordScoresView.fxml"));
+            Parent root = RecordScoresLoader.load();
+            RecordScoresViewController controller = RecordScoresLoader.getController();
             controller.populateScores(record);
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -282,7 +282,8 @@ public class MainViewController implements Initializable {
             stage.setTitle("NHS Field Matcher");
             FXMLLoader FieldMatcherLoader = new FXMLLoader(getClass().getResource("../resources/FieldMatcher.fxml"));
             Parent root = FieldMatcherLoader.load();
-            FieldMatcherLoader.getController();
+            FieldMatcherController matcherLoader = FieldMatcherLoader.getController();
+            matcherLoader.mainViewController = this;
             Scene scene = new Scene(root,1500,500);
             stage.setMaximized(true);
             stage.setScene(scene);

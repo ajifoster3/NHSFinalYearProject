@@ -1,6 +1,6 @@
 package Main.Enums;
 
-public enum PatientRecordEnum {
+public enum EnumValue {
 
     hospitalNumber("Hospital Number specific to the patient"),
     firstName("First Name of the patient"),
@@ -37,6 +37,7 @@ public enum PatientRecordEnum {
     liverScore("SOFA(Sequential organ failure assessment) Score for Liver function"),
     coagulationScore("SOFA(Sequential organ failure assessment) Score for Blood coagulation function"),
     kidneyScore("SOFA(Sequential organ failure assessment) Score for Kidney function"),
+    sofaTotal(""),
     respiritoryFunction("CPAx(Chelsea critical care physical assessment tool)"),
     cough("CPAx(Chelsea critical care physical assessment tool)"),
     movingInBed("CPAx(Chelsea critical care physical assessment tool)"),
@@ -47,6 +48,7 @@ public enum PatientRecordEnum {
     transferBedToChair("CPAx(Chelsea critical care physical assessment tool)"),
     stepping("CPAx(Chelsea critical care physical assessment tool)"),
     gripStrength("CPAx(Chelsea critical care physical assessment tool)"),
+    cpaxTotal(""),
     shoulderAbductionRight("MRC(Medical research council scale)"),
     shoulderAbductionLeft("MRC(Medical research council scale)"),
     elbowFlexionRight("MRC(Medical research council scale)"),
@@ -59,12 +61,14 @@ public enum PatientRecordEnum {
     kneeExtensionLeft("MRC(Medical research council scale)"),
     ankleDorsiflexionRight("MRC(Medical research council scale)"),
     ankleDorsiflexionLeft("MRC(Medical research council scale)"),
+    mrcTotal(""),
     completed("MMS – Manchester mobility score Completed"),
     mms("MMS (Manchester mobility score)");
 
+
     private String code;
 
-    PatientRecordEnum(String code) {
+    EnumValue(String code) {
         this.code = code;
     }
 
