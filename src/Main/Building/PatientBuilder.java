@@ -5,7 +5,7 @@ import Main.Cleansing.CleanserDelegator;
 import Main.Building.BuildingHelper.CleanserDelagatorService;
 import Main.Controllers.ControllerHelpers.PatientBuilderService;
 import Main.Data.*;
-import Main.Enums.PatientValuesEnum;
+import Main.Enums.PatientHeadersEnum;
 import Main.Cleansing.CleansingHelpers.RASSHelper;
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -65,7 +65,7 @@ public class PatientBuilder implements PatientBuilderService {
                     String visitPoid = patientList.get(i).getHospitalVisits().get(j).getPOID();
                     patientList.get(i).getHospitalVisits().get(j).setRecords(new LinkedList<>());
                     for (int k = 0; k < dataList.get(0).size(); k++) {
-                        if(dataList.get(dataField.indexOf(PatientValuesEnum.POID.toString())).get(k).toString().equals(visitPoid)){
+                        if(dataList.get(dataField.indexOf(PatientHeadersEnum.POID.toString())).get(k).toString().equals(visitPoid)){
                             Record record = buildRecord(k);
                             if(!patientList.get(i).getHospitalVisits().get(j).getRecords().contains(record)){
                                 patientList.get(i).getHospitalVisits().get(j).getRecords().add(buildRecord(k));
@@ -82,45 +82,45 @@ public class PatientBuilder implements PatientBuilderService {
 
     private Patient buildPatient(Integer i){
         Patient patient = new Patient();
-        patient.setFirstName(getStringValueFromEnumAndIndex(PatientValuesEnum.firstName, i));
-        patient.setLastName(getStringValueFromEnumAndIndex(PatientValuesEnum.lastName, i));
-        patient.setDateOfBirth(getDateValueFromEnumAndIndex(PatientValuesEnum.dateOfBirth, i));
-        patient.setHospitalNumber(getStringValueFromEnumAndIndex(PatientValuesEnum.hospitalNumber, i));
-        patient.setSex(getStringValueFromEnumAndIndex(PatientValuesEnum.sex, i));
+        patient.setFirstName(getStringValueFromEnumAndIndex(PatientHeadersEnum.firstName, i));
+        patient.setLastName(getStringValueFromEnumAndIndex(PatientHeadersEnum.lastName, i));
+        patient.setDateOfBirth(getDateValueFromEnumAndIndex(PatientHeadersEnum.dateOfBirth, i));
+        patient.setHospitalNumber(getStringValueFromEnumAndIndex(PatientHeadersEnum.hospitalNumber, i));
+        patient.setSex(getStringValueFromEnumAndIndex(PatientHeadersEnum.sex, i));
         return patient;
     }
 
     private Visit buildVisit(Integer visitIndex){
         Visit visit = new Visit();
-        visit.setPOID(getStringValueFromEnumAndIndex(PatientValuesEnum.POID, visitIndex));
-        visit.setPatientCategory(getStringValueFromEnumAndIndex(PatientValuesEnum.patientCategory, visitIndex));
-        visit.setPastMedicalHistory(getStringValueFromEnumAndIndex(PatientValuesEnum.pastMedicalHistory, visitIndex));
-        visit.setOutcome(getBooleanValueFromEnumAndIndex(PatientValuesEnum.outcome, visitIndex));
-        visit.setHistory(getStringValueFromEnumAndIndex(PatientValuesEnum.history, visitIndex));
-        visit.setDischargeDateICU(getDateValueFromEnumAndIndex(PatientValuesEnum.dischargeDateICU, visitIndex));
-        visit.setDischargeDateHos(getDateValueFromEnumAndIndex(PatientValuesEnum.dischargeDateHos, visitIndex));
-        visit.setDiagnosis(getStringValueFromEnumAndIndex(PatientValuesEnum.diagnosis, visitIndex));
-        visit.setDependencyPreAdmit(getStringValueFromEnumAndIndex(PatientValuesEnum.dependencyPreAdmit, visitIndex));
-        visit.setAdmitType(getStringValueFromEnumAndIndex(PatientValuesEnum.admitType, visitIndex));
-        visit.setAdmitFrom(getStringValueFromEnumAndIndex(PatientValuesEnum.admitFrom, visitIndex));
-        visit.setAdmitDateICU(getDateValueFromEnumAndIndex(PatientValuesEnum.admitDateICU, visitIndex));
-        visit.setAdmitDateHos(getDateValueFromEnumAndIndex(PatientValuesEnum.admitDateHos, visitIndex));
+        visit.setPOID(getStringValueFromEnumAndIndex(PatientHeadersEnum.POID, visitIndex));
+        visit.setPatientCategory(getStringValueFromEnumAndIndex(PatientHeadersEnum.patientCategory, visitIndex));
+        visit.setPastMedicalHistory(getStringValueFromEnumAndIndex(PatientHeadersEnum.pastMedicalHistory, visitIndex));
+        visit.setOutcome(getBooleanValueFromEnumAndIndex(PatientHeadersEnum.outcome, visitIndex));
+        visit.setHistory(getStringValueFromEnumAndIndex(PatientHeadersEnum.history, visitIndex));
+        visit.setDischargeDateICU(getDateValueFromEnumAndIndex(PatientHeadersEnum.dischargeDateICU, visitIndex));
+        visit.setDischargeDateHos(getDateValueFromEnumAndIndex(PatientHeadersEnum.dischargeDateHos, visitIndex));
+        visit.setDiagnosis(getStringValueFromEnumAndIndex(PatientHeadersEnum.diagnosis, visitIndex));
+        visit.setDependencyPreAdmit(getStringValueFromEnumAndIndex(PatientHeadersEnum.dependencyPreAdmit, visitIndex));
+        visit.setAdmitType(getStringValueFromEnumAndIndex(PatientHeadersEnum.admitType, visitIndex));
+        visit.setAdmitFrom(getStringValueFromEnumAndIndex(PatientHeadersEnum.admitFrom, visitIndex));
+        visit.setAdmitDateICU(getDateValueFromEnumAndIndex(PatientHeadersEnum.admitDateICU, visitIndex));
+        visit.setAdmitDateHos(getDateValueFromEnumAndIndex(PatientHeadersEnum.admitDateHos, visitIndex));
         return visit;
     }
 
     private Record buildRecord(Integer recordIndex){
         Record record = new Record();
-        record.setDate(getDateValueFromEnumAndIndex(PatientValuesEnum.date, recordIndex));
-        record.setBreathing(getStringValueFromEnumAndIndex(PatientValuesEnum.breathing, recordIndex));
-        record.setCirculation(getStringValueFromEnumAndIndex(PatientValuesEnum.circulation, recordIndex));
-        record.setDurationOfSession(getStringValueFromEnumAndIndex(PatientValuesEnum.durationOfSession, recordIndex));
-        record.setComprehensiveRehab(getStringValueFromEnumAndIndex(PatientValuesEnum.comprehensiveRehab, recordIndex));
-        record.setFitnessToParticipate(getStringValueFromEnumAndIndex(PatientValuesEnum.fitnessToParticipate, recordIndex));
-        record.setDelirium(getStringValueFromEnumAndIndex(PatientValuesEnum.delirium, recordIndex));
-        record.setIpat(getStringValueFromEnumAndIndex(PatientValuesEnum.ipat, recordIndex));
-        record.setFitForPhysio(getBooleanValueFromEnumAndIndex(PatientValuesEnum.fitForPhysio, recordIndex));
-        record.setRassHigh(getRassValueFromEnumAndIndex(PatientValuesEnum.rass, recordIndex).rassHigh);
-        record.setRassLow(getRassValueFromEnumAndIndex(PatientValuesEnum.rass, recordIndex).rassLow);
+        record.setDate(getDateValueFromEnumAndIndex(PatientHeadersEnum.date, recordIndex));
+        record.setBreathing(getStringValueFromEnumAndIndex(PatientHeadersEnum.breathing, recordIndex));
+        record.setCirculation(getStringValueFromEnumAndIndex(PatientHeadersEnum.circulation, recordIndex));
+        record.setDurationOfSession(getStringValueFromEnumAndIndex(PatientHeadersEnum.durationOfSession, recordIndex));
+        record.setComprehensiveRehab(getStringValueFromEnumAndIndex(PatientHeadersEnum.comprehensiveRehab, recordIndex));
+        record.setFitnessToParticipate(getStringValueFromEnumAndIndex(PatientHeadersEnum.fitnessToParticipate, recordIndex));
+        record.setDelirium(getStringValueFromEnumAndIndex(PatientHeadersEnum.delirium, recordIndex));
+        record.setIpat(getStringValueFromEnumAndIndex(PatientHeadersEnum.ipat, recordIndex));
+        record.setFitForPhysio(getBooleanValueFromEnumAndIndex(PatientHeadersEnum.fitForPhysio, recordIndex));
+        record.setRassHigh(getRassValueFromEnumAndIndex(PatientHeadersEnum.rass, recordIndex).rassHigh);
+        record.setRassLow(getRassValueFromEnumAndIndex(PatientHeadersEnum.rass, recordIndex).rassLow);
         record.setCpax(buildCPAx(recordIndex));
         record.setMms(buildMMS(recordIndex));
         record.setMrc(buildMRC(recordIndex));
@@ -130,58 +130,58 @@ public class PatientBuilder implements PatientBuilderService {
 
     private CPAx buildCPAx(Integer recordIndex){
          CPAx cpax = new CPAx();
-         cpax.setCough(getIntegerValueFromEnumAndIndex(PatientValuesEnum.cough, recordIndex));
-         cpax.setDynamicSitting(getIntegerValueFromEnumAndIndex(PatientValuesEnum.dynamicSitting, recordIndex));
-         cpax.setGripStrength(getIntegerValueFromEnumAndIndex(PatientValuesEnum.gripStrength, recordIndex));
-         cpax.setMovingInBed(getIntegerValueFromEnumAndIndex(PatientValuesEnum.movingInBed, recordIndex));
-         cpax.setSitToStand(getIntegerValueFromEnumAndIndex(PatientValuesEnum.sitToStand, recordIndex));
-         cpax.setStandingBalance(getIntegerValueFromEnumAndIndex(PatientValuesEnum.standingBalance, recordIndex));
-         cpax.setStepping(getIntegerValueFromEnumAndIndex(PatientValuesEnum.stepping, recordIndex));
-         cpax.setSupineToSitting(getIntegerValueFromEnumAndIndex(PatientValuesEnum.supineToSitting, recordIndex));
-         cpax.setTransferBedToChair(getIntegerValueFromEnumAndIndex(PatientValuesEnum.transferBedToChair, recordIndex));
-         cpax.setTotal(getTotalIntegerValueFromEnumAndIndex(PatientValuesEnum.cpaxTotal, recordIndex));
+         cpax.setCough(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.cough, recordIndex));
+         cpax.setDynamicSitting(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.dynamicSitting, recordIndex));
+         cpax.setGripStrength(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.gripStrength, recordIndex));
+         cpax.setMovingInBed(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.movingInBed, recordIndex));
+         cpax.setSitToStand(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.sitToStand, recordIndex));
+         cpax.setStandingBalance(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.standingBalance, recordIndex));
+         cpax.setStepping(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.stepping, recordIndex));
+         cpax.setSupineToSitting(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.supineToSitting, recordIndex));
+         cpax.setTransferBedToChair(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.transferBedToChair, recordIndex));
+         cpax.setTotal(getTotalIntegerValueFromEnumAndIndex(PatientHeadersEnum.cpaxTotal, recordIndex));
          return cpax;
     }
 
     private MMS buildMMS(Integer recordIndex){
         MMS mms = new MMS();
-        mms.setMms(getStringValueFromEnumAndIndex(PatientValuesEnum.mms, recordIndex));
-        mms.setCompleted(getBooleanValueFromEnumAndIndex(PatientValuesEnum.completed, recordIndex));
+        mms.setMms(getStringValueFromEnumAndIndex(PatientHeadersEnum.mms, recordIndex));
+        mms.setCompleted(getBooleanValueFromEnumAndIndex(PatientHeadersEnum.completed, recordIndex));
         return mms;
     }
 
     private MRC buildMRC(Integer recordIndex){
         MRC mrc = new MRC();
-        mrc.setAnkleDorsiflexionLeft(getIntegerValueFromEnumAndIndex(PatientValuesEnum.ankleDorsiflexionLeft, recordIndex));
-        mrc.setAnkleDorsiflexionRight(getIntegerValueFromEnumAndIndex(PatientValuesEnum.ankleDorsiflexionRight, recordIndex));
-        mrc.setElbowFlexionLeft(getIntegerValueFromEnumAndIndex(PatientValuesEnum.elbowFlexionLeft, recordIndex));
-        mrc.setElbowFlexionRight(getIntegerValueFromEnumAndIndex(PatientValuesEnum.elbowFlexionRight, recordIndex));
-        mrc.setHipFlexionLeft(getIntegerValueFromEnumAndIndex(PatientValuesEnum.hipFlexionLeft, recordIndex));
-        mrc.setHipFlexionRight(getIntegerValueFromEnumAndIndex(PatientValuesEnum.hipFlexionRight, recordIndex));
-        mrc.setKneeExtensionLeft(getIntegerValueFromEnumAndIndex(PatientValuesEnum.kneeExtensionLeft, recordIndex));
-        mrc.setKneeExtensionRight(getIntegerValueFromEnumAndIndex(PatientValuesEnum.kneeExtensionRight, recordIndex));
-        mrc.setShoulderAbductionLeft(getIntegerValueFromEnumAndIndex(PatientValuesEnum.shoulderAbductionLeft, recordIndex));
-        mrc.setShoulderAbductionRight(getIntegerValueFromEnumAndIndex(PatientValuesEnum.shoulderAbductionRight, recordIndex));
-        mrc.setWristExtensionLeft(getIntegerValueFromEnumAndIndex(PatientValuesEnum.wristExtensionLeft, recordIndex));
-        mrc.setWristExtensionRight(getIntegerValueFromEnumAndIndex(PatientValuesEnum.wristExtensionRight, recordIndex));
-        mrc.setTotal(getTotalIntegerValueFromEnumAndIndex(PatientValuesEnum.mrcTotal, recordIndex));
+        mrc.setAnkleDorsiflexionLeft(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.ankleDorsiflexionLeft, recordIndex));
+        mrc.setAnkleDorsiflexionRight(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.ankleDorsiflexionRight, recordIndex));
+        mrc.setElbowFlexionLeft(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.elbowFlexionLeft, recordIndex));
+        mrc.setElbowFlexionRight(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.elbowFlexionRight, recordIndex));
+        mrc.setHipFlexionLeft(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.hipFlexionLeft, recordIndex));
+        mrc.setHipFlexionRight(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.hipFlexionRight, recordIndex));
+        mrc.setKneeExtensionLeft(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.kneeExtensionLeft, recordIndex));
+        mrc.setKneeExtensionRight(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.kneeExtensionRight, recordIndex));
+        mrc.setShoulderAbductionLeft(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.shoulderAbductionLeft, recordIndex));
+        mrc.setShoulderAbductionRight(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.shoulderAbductionRight, recordIndex));
+        mrc.setWristExtensionLeft(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.wristExtensionLeft, recordIndex));
+        mrc.setWristExtensionRight(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.wristExtensionRight, recordIndex));
+        mrc.setTotal(getTotalIntegerValueFromEnumAndIndex(PatientHeadersEnum.mrcTotal, recordIndex));
         return mrc;
     }
 
     private SOFA buildSOFA(Integer recordIndex){
         SOFA sofa = new SOFA();
-        sofa.setCardiovascularScore(getIntegerValueFromEnumAndIndex(PatientValuesEnum.cardiovascularScore, recordIndex));
-        sofa.setCoagulationScore(getIntegerValueFromEnumAndIndex(PatientValuesEnum.coagulationScore, recordIndex));
-        sofa.setKidneyScore(getIntegerValueFromEnumAndIndex(PatientValuesEnum.kidneyScore, recordIndex));
-        sofa.setLiverScore(getIntegerValueFromEnumAndIndex(PatientValuesEnum.liverScore, recordIndex));
-        sofa.setNervousScore(getIntegerValueFromEnumAndIndex(PatientValuesEnum.nervousScore, recordIndex));
-        sofa.setRespiratoryScore(getIntegerValueFromEnumAndIndex(PatientValuesEnum.respiratoryScore, recordIndex));
-        sofa.setTotal(getTotalIntegerValueFromEnumAndIndex(PatientValuesEnum.sofaTotal, recordIndex));
+        sofa.setCardiovascularScore(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.cardiovascularScore, recordIndex));
+        sofa.setCoagulationScore(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.coagulationScore, recordIndex));
+        sofa.setKidneyScore(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.kidneyScore, recordIndex));
+        sofa.setLiverScore(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.liverScore, recordIndex));
+        sofa.setNervousScore(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.nervousScore, recordIndex));
+        sofa.setRespiratoryScore(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.respiratoryScore, recordIndex));
+        sofa.setTotal(getTotalIntegerValueFromEnumAndIndex(PatientHeadersEnum.sofaTotal, recordIndex));
         return sofa;
     }
 
 
-    public String getStringValueFromEnumAndIndex(PatientValuesEnum patEnum, Integer index){
+    public String getStringValueFromEnumAndIndex(PatientHeadersEnum patEnum, Integer index){
         try{
             return (String)dataList.get(dataField.indexOf(patEnum.toString())).get(index);
         }catch (Exception ex){
@@ -189,7 +189,7 @@ public class PatientBuilder implements PatientBuilderService {
         }
     }
 
-    public Integer getIntegerValueFromEnumAndIndex(PatientValuesEnum patEnum, Integer index){
+    public Integer getIntegerValueFromEnumAndIndex(PatientHeadersEnum patEnum, Integer index){
         try{
             return (Integer)dataList.get(dataField.indexOf(patEnum.toString())).get(index);
         }catch (Exception ex){
@@ -197,7 +197,7 @@ public class PatientBuilder implements PatientBuilderService {
         }
     }
 
-    public Integer getTotalIntegerValueFromEnumAndIndex(PatientValuesEnum patEnum, Integer index){
+    public Integer getTotalIntegerValueFromEnumAndIndex(PatientHeadersEnum patEnum, Integer index){
         try{
             return (Integer)dataList.get(dataField.indexOf(patEnum.toString())).get(index);
         }catch (Exception ex){
@@ -205,7 +205,7 @@ public class PatientBuilder implements PatientBuilderService {
         }
     }
 
-    public RASSHelper getRassValueFromEnumAndIndex(PatientValuesEnum patEnum, Integer index){
+    public RASSHelper getRassValueFromEnumAndIndex(PatientHeadersEnum patEnum, Integer index){
         try{
             return (RASSHelper) dataList.get(dataField.indexOf(patEnum.toString())).get(index);
         }catch (Exception ex){
@@ -213,7 +213,7 @@ public class PatientBuilder implements PatientBuilderService {
         }
     }
 
-    public Boolean getBooleanValueFromEnumAndIndex(PatientValuesEnum patEnum, Integer index){
+    public Boolean getBooleanValueFromEnumAndIndex(PatientHeadersEnum patEnum, Integer index){
         try{
             return (Boolean)dataList.get(dataField.indexOf(patEnum.toString())).get(index);
         }catch (Exception ex){
@@ -221,7 +221,7 @@ public class PatientBuilder implements PatientBuilderService {
         }
     }
 
-    public LocalDate getDateValueFromEnumAndIndex(PatientValuesEnum patEnum, Integer index){
+    public LocalDate getDateValueFromEnumAndIndex(PatientHeadersEnum patEnum, Integer index){
         try{
             return (LocalDate)dataList.get(dataField.indexOf(patEnum.toString())).get(index);
         }catch (Exception ex){

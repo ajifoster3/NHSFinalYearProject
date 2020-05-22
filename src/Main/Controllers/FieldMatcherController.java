@@ -2,7 +2,7 @@ package Main.Controllers;
 
 import Main.Controllers.ControllerHelpers.PatientBuilderService;
 import Main.Data.Patient;
-import Main.Enums.PatientValuesEnum;
+import Main.Enums.PatientHeadersEnum;
 import Main.ExcelReader;
 import Main.Building.PatientBuilder;
 import javafx.event.Event;
@@ -89,11 +89,11 @@ public class FieldMatcherController implements Initializable {
         }
         Headers = list;
 
-        PatientSetList = Stream.of(PatientValuesEnum.values())
+        PatientSetList = Stream.of(PatientHeadersEnum.values())
                 .map(Enum::name)
                 .collect(Collectors.toList());
 
-        PatientSetList = Stream.of(PatientValuesEnum.values())
+        PatientSetList = Stream.of(PatientHeadersEnum.values())
                 .map(Enum::name)
                 .collect(Collectors.toList());
 
@@ -193,7 +193,7 @@ public class FieldMatcherController implements Initializable {
             icn.setOnMouseClicked(event -> LeftPaneClick(index));
             Tooltip.install(
                     icn,
-                    new Tooltip(PatientValuesEnum.valueOf(PatientSetList.get(i)).getCode())
+                    new Tooltip(PatientHeadersEnum.valueOf(PatientSetList.get(i)).getCode())
             );
             if (leftSelectedIndex == i) {
                 icn.setStyle("-fx-background-color: #FFB877; -fx-background-radius:0; -fx-border-color: black");
