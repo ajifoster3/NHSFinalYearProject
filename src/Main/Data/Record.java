@@ -1,4 +1,4 @@
-package Main.Data.PatientRecord;
+package Main.Data;
 
 import Main.Cleansing.CleansingHelpers.LocalDateDeserializer;
 import Main.Cleansing.CleansingHelpers.LocalDateSerializer;

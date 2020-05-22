@@ -1,10 +1,11 @@
 package Main.Cleansing;
 
-import Main.Data.RASS;
+import Main.Building.BuildingHelper.CleanserDelagatorService;
+import Main.Cleansing.CleansingHelpers.RASSHelper;
 import java.time.LocalDate;
 import java.util.List;
 
-public class CleanserDelegator {
+public class CleanserDelegator implements CleanserDelagatorService {
 
     private PatientCleanser patientCleanser;
     private VisitCleanser visitCleanser;
@@ -154,7 +155,7 @@ public class CleanserDelegator {
         return recordCleanser.cleansefitForPhysio(header);
     }
 
-    public List<RASS> cleanserass(String header){
+    public List<RASSHelper> cleanserass(String header){
         return recordCleanser.cleanserass(header);
     }
 

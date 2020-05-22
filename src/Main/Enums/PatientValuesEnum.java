@@ -1,6 +1,6 @@
 package Main.Enums;
 
-public enum EnumValue {
+public enum PatientValuesEnum {
 
     hospitalNumber("Hospital Number specific to the patient"),
     firstName("First Name of the patient"),
@@ -68,7 +68,7 @@ public enum EnumValue {
 
     private String code;
 
-    EnumValue(String code) {
+    PatientValuesEnum(String code) {
         this.code = code;
     }
 

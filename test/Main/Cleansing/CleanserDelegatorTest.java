@@ -1,6 +1,6 @@
 package Main.Cleansing;
 
-import Main.Data.RASS;
+import Main.Cleansing.CleansingHelpers.RASSHelper;
 import Main.ExcelReader;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.junit.jupiter.api.BeforeAll;
@@ -428,7 +428,7 @@ class CleanserDelegatorTest  {
 
     @Test
     void cleanserass() {
-        List<RASS> cleansedvalues = cleanserDelegator.cleanserass("Rass");
+        List<RASSHelper> cleansedvalues = cleanserDelegator.cleanserass("Rass");
         List<Integer> lowRASS = new ArrayList<>() {{
             add(0);
             add(-4);

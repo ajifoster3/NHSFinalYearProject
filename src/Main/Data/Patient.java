@@ -1,4 +1,4 @@
-package Main.Data.PatientRecord;
+package Main.Data;
 
 import Main.Data.DataHelpers.AgeCalculator;
 import Main.Cleansing.CleansingHelpers.LocalDateDeserializer;

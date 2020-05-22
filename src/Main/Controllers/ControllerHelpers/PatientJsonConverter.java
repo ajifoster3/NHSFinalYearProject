@@ -1,7 +1,7 @@
 package Main.Controllers.ControllerHelpers;
 
 
-import Main.Data.PatientRecord.Patient;
+import Main.Data.Patient;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

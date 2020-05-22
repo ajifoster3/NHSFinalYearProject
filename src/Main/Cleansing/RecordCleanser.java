@@ -2,7 +2,7 @@ package Main.Cleansing;
 
 
 import Main.ExcelReader;
-import Main.Data.RASS;
+import Main.Cleansing.CleansingHelpers.RASSHelper;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -85,9 +85,9 @@ class RecordCleanser {
         return cleansedFitForPhysioList;
     }
 
-    protected List<RASS> cleanserass(String header){
+    protected List<RASSHelper> cleanserass(String header){
         List<String> rassList = excelReader.ExcelColumnAsList(header);
-        List<RASS> cleansedRassList = new LinkedList<>();
+        List<RASSHelper> cleansedRassList = new LinkedList<>();
         rassList.forEach( value -> {
             List<String> csvrass = Arrays.asList(value.split(","));
             List<Integer> rassAsInt = new LinkedList<>();
@@ -96,11 +96,11 @@ class RecordCleanser {
                 if(csvValue.matches("-?\\d+(\\.\\d+)?"))
                     rassAsInt.add((int)Double.parseDouble(csvValue));
             });
-            RASS rass;
+            RASSHelper rass;
             if(!rassAsInt.isEmpty()) {
-                rass = new RASS(Collections.min(rassAsInt), Collections.max(rassAsInt));
+                rass = new RASSHelper(Collections.min(rassAsInt), Collections.max(rassAsInt));
             }else{
-                rass = new RASS(-99, -99);
+                rass = new RASSHelper(-99, -99);
             }
             cleansedRassList.add(rass);
         });

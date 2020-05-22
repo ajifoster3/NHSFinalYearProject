@@ -1,8 +1,8 @@
 package Main.Controllers;
 
-import Main.Data.PatientRecord.Patient;
-import Main.Data.PatientRecord.Record;
-import Main.Data.PatientRecord.Visit;
+import Main.Data.Patient;
+import Main.Data.Record;
+import Main.Data.Visit;
 import Main.Controllers.ControllerHelpers.DBHelper;
 import Main.Controllers.ControllerHelpers.PatientJsonConverter;
 import javafx.event.ActionEvent;

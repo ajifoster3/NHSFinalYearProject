@@ -1,12 +1,10 @@
 package Main.Controllers;
 
-import Main.Data.PatientRecord.*;
-import Main.Main;
+import Main.Data.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 

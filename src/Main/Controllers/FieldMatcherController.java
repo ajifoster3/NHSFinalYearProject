@@ -1,9 +1,10 @@
 package Main.Controllers;
 
-import Main.Data.PatientRecord.Patient;
-import Main.Enums.EnumValue;
+import Main.Controllers.ControllerHelpers.PatientBuilderService;
+import Main.Data.Patient;
+import Main.Enums.PatientValuesEnum;
 import Main.ExcelReader;
-import Main.Cleansing.PatientBuilder;
+import Main.Building.PatientBuilder;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -88,11 +89,11 @@ public class FieldMatcherController implements Initializable {
         }
         Headers = list;
 
-        PatientSetList = Stream.of(EnumValue.values())
+        PatientSetList = Stream.of(PatientValuesEnum.values())
                 .map(Enum::name)
                 .collect(Collectors.toList());
 
-        PatientSetList = Stream.of(EnumValue.values())
+        PatientSetList = Stream.of(PatientValuesEnum.values())
                 .map(Enum::name)
                 .collect(Collectors.toList());
 
@@ -192,7 +193,7 @@ public class FieldMatcherController implements Initializable {
             icn.setOnMouseClicked(event -> LeftPaneClick(index));
             Tooltip.install(
                     icn,
-                    new Tooltip(EnumValue.valueOf(PatientSetList.get(i)).getCode())
+                    new Tooltip(PatientValuesEnum.valueOf(PatientSetList.get(i)).getCode())
             );
             if (leftSelectedIndex == i) {
                 icn.setStyle("-fx-background-color: #FFB877; -fx-background-radius:0; -fx-border-color: black");
@@ -264,7 +265,7 @@ public class FieldMatcherController implements Initializable {
 
     @FXML
     private void button_confirm_click(){
-        PatientBuilder matcher = new PatientBuilder(LeftJoined, RightJoined);
+        PatientBuilderService matcher = new PatientBuilder(LeftJoined, RightJoined);
         List<Patient> patients = matcher.BuildPatientList();
 
         Stage stage = (Stage) button_confirm.getScene().getWindow();

@@ -1,8 +1,8 @@
-package Main.Data;
+package Main.Cleansing.CleansingHelpers;
 
-public class RASS {
+public class RASSHelper {
 
-    public RASS(int rassLow, int rassHigh){
+    public RASSHelper(int rassLow, int rassHigh){
         this.rassLow = rassLow;
         this.rassHigh = rassHigh;
     }

@@ -1,4 +1,4 @@
-package Main.Data.PatientRecord;
+package Main.Data;
 
 public class CPAx {
 

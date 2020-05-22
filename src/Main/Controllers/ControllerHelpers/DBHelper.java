@@ -1,6 +1,6 @@
 package Main.Controllers.ControllerHelpers;
 
-import Main.Data.PatientRecord.*;
+import Main.Data.*;
 import org.sqlite.SQLiteConfig;
 
 import java.io.File;
