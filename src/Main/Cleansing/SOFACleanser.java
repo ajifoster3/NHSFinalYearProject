@@ -49,7 +49,7 @@ class SOFACleanser {
     private List<Integer> cleanseSOFA(List<String> values){
         List<Integer> mrcList = IntegerParser.GetIntegers(values);
         for (int i = 0; i < mrcList.size(); i++) {
-            if(mrcList.get(i) < -1 || mrcList.get(i) > 5){
+            if(mrcList.get(i) < -1 || mrcList.get(i) > 4){
                 mrcList.set(i, -1);
             }
         }
