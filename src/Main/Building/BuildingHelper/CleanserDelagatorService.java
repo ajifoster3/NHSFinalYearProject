@@ -5,7 +5,11 @@ import Main.Cleansing.CleansingHelpers.RASSHelper;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Interface class for accessing CleanserDelegator
+ */
 public interface CleanserDelagatorService {
+
     List<String> cleansehospitalNumber(String header);
 
     List<String> cleansefirstName(String header);

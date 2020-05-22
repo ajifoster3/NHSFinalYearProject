@@ -63,10 +63,20 @@ class CPAxCleanser {
     protected List<Integer> cleansecpaxTotal(String header) {
         List<String> cpaxTotalList = excelReader.ExcelColumnAsList(header);
         Collections.replaceAll(cpaxTotalList, "", "-1");
-        return cleanseCPAX(cpaxTotalList);
+        return cleanseCPAXTotal(cpaxTotalList);
     }
 
     private List<Integer> cleanseCPAX(List<String> values){
+        List<Integer> cpaxList = IntegerParser.GetIntegers(values);
+        for (int i = 0; i < cpaxList.size(); i++) {
+            if(cpaxList.get(i) < -1 || cpaxList.get(i) > 5){
+                cpaxList.set(i, -1);
+            }
+        }
+        return cpaxList;
+    }
+
+    private List<Integer> cleanseCPAXTotal(List<String> values){
         return IntegerParser.GetIntegers(values);
     }
 

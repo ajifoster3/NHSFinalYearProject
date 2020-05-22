@@ -71,11 +71,22 @@ class MRCCleanser {
     protected List<Integer> cleansemrcTotal(String header){
         List<String> mrcTotalList = excelReader.ExcelColumnAsList(header);
         mrcTotalList.forEach(value ->{if(value.equals("")) value = "-1";});
-        return cleanseMRC(mrcTotalList);
+        return cleanseMRCTotal(mrcTotalList);
     }
 
     private List<Integer> cleanseMRC(List<String> values){
+        List<Integer> mrcList = IntegerParser.GetIntegers(values);
+        for (int i = 0; i < mrcList.size(); i++) {
+            if(mrcList.get(i) < -1 || mrcList.get(i) > 5){
+                mrcList.set(i, -1);
+            }
+        }
+        return mrcList;
+    }
+
+    private List<Integer> cleanseMRCTotal(List<String> values){
         return IntegerParser.GetIntegers(values);
     }
+
 
 }

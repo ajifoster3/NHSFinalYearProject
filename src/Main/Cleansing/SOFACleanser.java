@@ -43,10 +43,20 @@ class SOFACleanser {
     protected List<Integer> cleansesofaTotal(String header){
         List<String> sofaTotalScoreList = excelReader.ExcelColumnAsList(header);
         Collections.replaceAll(sofaTotalScoreList, "", "-1");
-        return cleanseSOFA(sofaTotalScoreList);
+        return cleanseSOFATotoal(sofaTotalScoreList);
     }
 
     private List<Integer> cleanseSOFA(List<String> values){
+        List<Integer> mrcList = IntegerParser.GetIntegers(values);
+        for (int i = 0; i < mrcList.size(); i++) {
+            if(mrcList.get(i) < -1 || mrcList.get(i) > 5){
+                mrcList.set(i, -1);
+            }
+        }
+        return mrcList;
+    }
+
+    private List<Integer> cleanseSOFATotoal(List<String> values){
         return IntegerParser.GetIntegers(values);
     }
 

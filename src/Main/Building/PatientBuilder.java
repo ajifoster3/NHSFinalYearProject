@@ -1,6 +1,5 @@
 package Main.Building;
 
-
 import Main.Cleansing.CleanserDelegator;
 import Main.Building.BuildingHelper.CleanserDelagatorService;
 import Main.Controllers.ControllerHelpers.PatientBuilderService;
@@ -13,6 +12,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Patient Builder Builds is used for the building of a List of patients
+ */
 public class PatientBuilder implements PatientBuilderService {
 
     private static final Logger LOGGER = Logger.getLogger(PatientBuilder.class.getName());
@@ -24,11 +26,20 @@ public class PatientBuilder implements PatientBuilderService {
 
     private CleanserDelagatorService cleanserDelegator = new CleanserDelegator();
 
+    /**
+     * Constructer Assigns the two Fieldlists to the class fields
+     * @param dataField
+     * @param excelField
+     */
     public PatientBuilder(List<String> dataField, List<String> excelField){
         this.dataField = dataField;
         this.excelField = excelField;
     }
 
+    /**
+     * Call after construction to build a list of cleansed patients
+     * @return List of Patients for the fields entered on construction
+     */
     public List<Patient> BuildPatientList(){
         var cArg = new Class[1];
         cArg[0] = String.class;
@@ -80,6 +91,11 @@ public class PatientBuilder implements PatientBuilderService {
 
     }
 
+    /**
+     * Takes an index value and constructs and returns the Patient for that index
+     * @param i
+     * @return Patient
+     */
     private Patient buildPatient(Integer i){
         Patient patient = new Patient();
         patient.setFirstName(getStringValueFromEnumAndIndex(PatientHeadersEnum.firstName, i));
@@ -90,6 +106,11 @@ public class PatientBuilder implements PatientBuilderService {
         return patient;
     }
 
+    /**
+     * Takes an index value and constructs and returns the Visit for that index
+     * @param visitIndex
+     * @return Visit
+     */
     private Visit buildVisit(Integer visitIndex){
         Visit visit = new Visit();
         visit.setPOID(getStringValueFromEnumAndIndex(PatientHeadersEnum.POID, visitIndex));
@@ -108,6 +129,11 @@ public class PatientBuilder implements PatientBuilderService {
         return visit;
     }
 
+    /**
+     * Takes an index value and constructs and returns the Record for that index
+     * @param recordIndex
+     * @return Record
+     */
     private Record buildRecord(Integer recordIndex){
         Record record = new Record();
         record.setDate(getDateValueFromEnumAndIndex(PatientHeadersEnum.date, recordIndex));
@@ -128,6 +154,11 @@ public class PatientBuilder implements PatientBuilderService {
         return record;
     }
 
+    /**
+     * Takes an index value and constructs and returns the CPAx for that index
+     * @param recordIndex
+     * @return CPAx
+     */
     private CPAx buildCPAx(Integer recordIndex){
          CPAx cpax = new CPAx();
          cpax.setCough(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.cough, recordIndex));
@@ -143,6 +174,11 @@ public class PatientBuilder implements PatientBuilderService {
          return cpax;
     }
 
+    /**
+     * Takes an index value and constructs and returns the MMS for that index
+     * @param recordIndex
+     * @return MMS
+     */
     private MMS buildMMS(Integer recordIndex){
         MMS mms = new MMS();
         mms.setMms(getStringValueFromEnumAndIndex(PatientHeadersEnum.mms, recordIndex));
@@ -150,6 +186,11 @@ public class PatientBuilder implements PatientBuilderService {
         return mms;
     }
 
+    /**
+     * Takes an index value and constructs and returns the MRC for that index
+     * @param recordIndex
+     * @return MRC
+     */
     private MRC buildMRC(Integer recordIndex){
         MRC mrc = new MRC();
         mrc.setAnkleDorsiflexionLeft(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.ankleDorsiflexionLeft, recordIndex));
@@ -168,6 +209,11 @@ public class PatientBuilder implements PatientBuilderService {
         return mrc;
     }
 
+    /**
+     * Takes an index value and constructs and returns the MRC for that index
+     * @param recordIndex
+     * @return MRC
+     */
     private SOFA buildSOFA(Integer recordIndex){
         SOFA sofa = new SOFA();
         sofa.setCardiovascularScore(getIntegerValueFromEnumAndIndex(PatientHeadersEnum.cardiovascularScore, recordIndex));
