@@ -89,7 +89,7 @@ class RecordCleanser {
         List<String> rassList = excelReader.ExcelColumnAsList(header);
         List<RASSHelper> cleansedRassList = new LinkedList<>();
         rassList.forEach( value -> {
-            List<String> csvrass = Arrays.asList(value.split(","));
+            List<String> csvrass = Arrays.asList(value.split("[\\ ,/]+"));
             List<Integer> rassAsInt = new LinkedList<>();
             csvrass.forEach( csvValue ->
             {
