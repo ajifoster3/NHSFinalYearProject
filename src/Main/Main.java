@@ -22,7 +22,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/MainView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Controllers/MainView.fxml"));
         Parent root = loader.load();
         mainViewController = loader.getController();
         primaryStage.setTitle("NHS Data Manager");

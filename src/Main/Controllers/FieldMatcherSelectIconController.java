@@ -10,7 +10,7 @@ public class FieldMatcherSelectIconController extends AnchorPane{
     public FieldMatcherSelectIconController() {
 
         FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("../resources/FieldMatcherSelectIcon.fxml")
+                getClass().getResource("FieldMatcherSelectIcon.fxml")
         );
         getStyleClass().add("dragicon");
         fxmlLoader.setRoot(this);
