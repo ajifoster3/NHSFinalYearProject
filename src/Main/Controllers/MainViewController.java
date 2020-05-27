@@ -16,8 +16,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Date;
@@ -318,9 +320,14 @@ public class MainViewController implements Initializable {
 
     public void SaveAsDbButtonClick(ActionEvent actionEvent) {
         try {
-            DBHelper.createNewDatabase("Patient.db");
-            DBHelper.createDataTables("Patient.db");
-            DBHelper.InsertPatients("Patient.db", this.patientList);
+            Stage stage = new Stage();
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save Patients");
+            File file = fileChooser.showSaveDialog(stage);
+
+            DBHelper.createNewDatabase(file);
+            DBHelper.createDataTables(file);
+            DBHelper.InsertPatients(file, this.patientList);
         } catch(Exception ex) {
             LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }

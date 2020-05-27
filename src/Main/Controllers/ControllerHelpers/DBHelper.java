@@ -24,9 +24,9 @@ public class DBHelper {
         return connection;
     }
 
-    public static void createNewDatabase(String fileName) {
+    public static void createNewDatabase(File file) {
 
-        File file = new File(fileName);
+
 
         if(file.delete())
         {
@@ -37,7 +37,7 @@ public class DBHelper {
             System.out.println("Failed to delete the file");
         }
 
-        String url = "jdbc:sqlite:" + fileName;
+        String url = "jdbc:sqlite:" + file.getAbsolutePath() + ".db";
 
         try (Connection conn = getConnection(url)) {
             if (conn != null) {
@@ -51,12 +51,12 @@ public class DBHelper {
         }
     }
 
-    public static void createDataTables(String fileName){
+    public static void createDataTables(File file){
         Connection c = null;
 
         try {
             Class.forName("org.sqlite.JDBC");
-            c = getConnection("jdbc:sqlite:" + fileName);
+            c = getConnection("jdbc:sqlite:"  + file.getAbsolutePath() + ".db");
             System.out.println("Opened database successfully");
 
             createPatientTable(c);
@@ -241,10 +241,10 @@ public class DBHelper {
         System.out.println("Table created successfully");
     }
 
-    public static void InsertPatients(String fileName, List<Patient> patients){
+    public static void InsertPatients(File file, List<Patient> patients){
 
         try {
-            Connection c = getConnection("jdbc:sqlite:" + fileName);
+            Connection c = getConnection("jdbc:sqlite:" + file.getAbsolutePath() + ".db");
             patients.forEach(patient -> InsertPatient(c, patient));
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
